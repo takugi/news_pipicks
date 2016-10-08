@@ -1,0 +1,9 @@
+.header
+  .header__title
+    %h1 News Pipicks
+  .header__nav
+    .header__nav__user
+      = link_to "#" do
+        = image_tag "#", style: "width: 40px; height: 40px;"
+    .header__nav__new-letter
+      = link_to "new", new_letter_path
