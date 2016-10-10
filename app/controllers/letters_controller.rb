@@ -1,5 +1,7 @@
 class LettersController < ApplicationController
 
+  before_action :set_letter, only: [:show]
+
   def index
   end
 
@@ -17,9 +19,16 @@ class LettersController < ApplicationController
     end
   end
 
+  def show
+  end
+
 
   private
   def url_params
     params.require(:url)
+  end
+
+  def set_letter
+    @letter = Letter.find(params[:id])
   end
 end
