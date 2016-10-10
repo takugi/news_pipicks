@@ -20,6 +20,7 @@
     right: 0;
     top: 0;
     bottom: 0;
+    font-size: 12px;
     &__user {
       position: relative;
       right: 70px;
@@ -30,6 +31,22 @@
     &__new-letter {
       position: relative;
       bottom: 25px;
+      right: 10px;
+      &__font {
+        color: #FFFFFF;
+      }
+    }
+    &__regist {
+      position: relative;
+      top: 16px;
+      right: 90px;
+      &__font {
+        color: #FFFFFF;
+      }
+    }
+    &__login {
+      position: relative;
+      top: 4px;
       right: 10px;
       &__font {
         color: #FFFFFF;
