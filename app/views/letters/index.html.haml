@@ -1,21 +1,6 @@
 .container
-  .container__user-area
-    .container__user-area__user
-      .container__user-area__user__thumbnail
-        = image_tag "#", style: "width: 60px; height: 60px;"
-      .container__user-area__user__name
-        %h2 nagano
-    .container__user-area__follow-info
-      .container__user-area__follow-info__following
-        .container__user-area__follow-info__following__count
-          %p 21
-        .container__user-area__follow-info__following__caption
-          %p フォロー
-      .container__user-area__follow-info__follower
-        .container__user-area__follow-info__follower__count
-          %p 32
-        .container__user-area__follow-info__follower__caption
-          %p フォロワー
+  = render partial: "layouts/sidebar"
+
   .container__letter-container
     .container__letter-container__individual-letter
       .container__letter-container__individual-letter__thumbnail
