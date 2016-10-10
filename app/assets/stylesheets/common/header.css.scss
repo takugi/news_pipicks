@@ -11,6 +11,9 @@
     text-align: center;
     line-height: 50px;
     width: 300px;
+    &__font {
+      color: #FFFFFF;
+    }
   }
   &__nav {
     position: absolute;
@@ -28,6 +31,9 @@
       position: relative;
       bottom: 25px;
       right: 10px;
+      &__font {
+        color: #FFFFFF;
+      }
     }
   }
 }

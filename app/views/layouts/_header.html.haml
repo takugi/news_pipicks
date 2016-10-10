@@ -1,10 +1,10 @@
 .header
   .header__title
     %h1
-      = link_to "News Pipicks", root_path
+      = link_to "News Pipicks", root_path, class: "header__title__font"
   .header__nav
     .header__nav__user
       = link_to "#" do
         = image_tag "#", style: "width: 40px; height: 40px;"
     .header__nav__new-letter
-      = link_to "投稿", new_letter_path
+      = link_to "投稿", new_letter_path, class: "header__nav__new-letter__font"
