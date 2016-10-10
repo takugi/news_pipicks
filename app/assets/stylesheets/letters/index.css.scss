@@ -1,0 +1,131 @@
+.container {
+  @include clearfix();
+  overflow-x: hidden;
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  min-height: 680px;
+  background-color: #EFEFEF;
+  &__user-area {
+    position: fixed;
+    width: 200px;
+    height: 680px;
+    background-color: #FFF;
+    &__user {
+      height: 150px;
+      &__thumbnail {
+        text-align: center;
+        padding: 30px 0 10px;
+      }
+      &__name {
+        text-align: center;
+      }
+    }
+    &__follow-info {
+      @include clearfix();
+      padding: 10px 0;
+      margin: 0 auto;
+      width: 180px;
+      height: 50px;
+      border-top: solid 1px #999;
+      &__following {
+        width: 88px;
+        height: 50px;
+        float: left;
+        border-right: solid 1px #999;
+        &__count {
+          margin-top: 5px;
+          text-align: center;
+          font-size: 18px;
+        }
+        &__caption {
+          margin-top: 5px;
+          text-align: center;
+          font-size: 8px;
+        }
+      }
+      &__follower {
+        width: 88px;
+        height: 50px;
+        float: right;
+        &__count {
+          margin-top: 5px;
+          text-align: center;
+          font-size: 18px;
+        }
+        &__caption {
+          margin-top: 5px;
+          text-align: center;
+          font-size: 8px;
+        }
+      }
+    }
+  }
+
+  &__letter-container {
+    @include clearfix();
+    padding-left: 200px;
+    min-width: 600px;
+    width: 100%;
+    &__individual-letter {
+      margin: 10px;
+      float: left;
+      width: 250px;
+      background-color: #FFF;
+      &__thumbnail {
+        height: 130px;
+        &__image {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &__title {
+        padding: 10px;
+        height: 50px;
+        &__font {
+          color: black;
+        }
+      }
+      &__user {
+        @include clearfix();
+        padding: 10px;
+        height: 50px;
+        &__thumbnail {
+          float: left;
+          width: 50px;
+          height: 50px;
+        }
+        &__info {
+          float: left;
+          &__name {
+            margin-left: 5px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 15px;
+          }
+          &__profile {
+            margin-left: 5px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            color: #999;
+          }
+        }
+      }
+      &__user-comment {
+        padding: 10px;
+        height: 40px;
+        font-size: 13px;
+      }
+      &__pickers {
+        @include clearfix();
+        &__individual-picker {
+          padding: 5px;
+          float: left;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}
