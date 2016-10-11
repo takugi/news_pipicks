@@ -1,0 +1,37 @@
+.container {
+  &__user-box {
+    background-color: #FFF;
+    border-bottom: 1px solid #EAEAEA;
+    &__user {
+      @include clearfix();
+      margin: 0 auto;
+      padding: 30px 20px;
+      width: 80%;
+      &__right-info {
+        float: left;
+        padding-right: 40px;
+        &__avatar {
+          width: 80px;
+          height: 80px;
+          border-radius: 80px;
+        }
+      }
+      &__left-info {
+        float: left;
+        &__name {
+          padding: 5px 0 20px;
+          font-size: 20px;
+          font-weight: bold;
+        }
+        &__like-count {
+          padding: 0 0 20px;
+          color: #999;
+          font-size: 12px;
+        }
+        &__profile {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
