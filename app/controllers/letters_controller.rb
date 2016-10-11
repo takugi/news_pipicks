@@ -1,6 +1,7 @@
 class LettersController < ApplicationController
 
   before_action :set_letter, only: [:show]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @letters = Letter.order("created_at desc")
