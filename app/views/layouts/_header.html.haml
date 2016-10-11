@@ -4,9 +4,9 @@
       = link_to "News Pipicks", root_path, class: "header__title__font"
   .header__nav
     - if user_signed_in?
-      .header__nav__user
-        = link_to "#" do
-          = image_tag "#", style: "width: 40px; height: 40px;"
+      .header__nav__user#user-header-image
+        = link_to "", remote: true do
+          = image_tag "", style: "width: 40px; height: 40px;"
       .header__nav__new-letter
         = link_to "投稿", new_letter_path, class: "header__nav__new-letter__font"
     - else
@@ -14,3 +14,11 @@
         = link_to "無料登録", new_user_registration_path, class: "header__nav__regist__font"
       .header__nav__login
         = link_to "ログイン", new_user_session_path, class: "header__nav__login__font"
+#user-menu-container.user-menu
+  .user-menu__user-name
+    = link_to "takugi", user_path(current_user), class: "user-menu__user-name__font"
+  .user-menu__user-edit
+    = link_to "設定", edit_user_path(current_user), class: "user-menu__user-edit__font"
+  .user-menu__logout
+    = link_to "ログアウト", destroy_user_session_path, class: "user-menu__logout__font"
+

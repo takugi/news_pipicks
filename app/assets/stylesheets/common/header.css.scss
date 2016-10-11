@@ -54,3 +54,40 @@
     }
   }
 }
+
+.user-menu {
+  position: fixed;
+  top: 52px;
+  right: 65px;
+  z-index: 100;
+  width: 120px;
+  background-color: #FFF;
+  border-radius: 3px;
+  &__user-name {
+    padding: 15px;
+    &__font {
+      color: black;
+      font-size: 14px;
+    }
+  }
+  &__user-edit {
+    padding: 15px;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    &__font {
+      color: black;
+      font-size: 14px;
+    }
+  }
+  &__logout {
+    padding: 15px;
+    &__font {
+      color: black;
+      font-size: 14px;
+    }
+  }
+}
+
+#user-menu-container {
+  display: none;
+}
