@@ -1,5 +1,7 @@
 class Letter < ActiveRecord::Base
 
+  has_many :comments
+
   validates :url, format: URI::regexp(%w(http https))
 
   def create_letter
