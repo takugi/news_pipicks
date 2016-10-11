@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  has_many :comments
-
   before_action :set_user, only: [:show, :edit, :update]
   before_action :authenticate_user!
 
