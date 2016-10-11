@@ -6,7 +6,7 @@
     - if user_signed_in?
       .header__nav__user#user-header-image
         = link_to "", remote: true do
-          = image_tag "", style: "width: 40px; height: 40px;"
+          = image_tag current_user.avatar, class: "header__nav__user__avatar"
       .header__nav__new-letter
         = link_to "投稿", new_letter_path, class: "header__nav__new-letter__font"
     - else

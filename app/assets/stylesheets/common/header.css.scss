@@ -27,6 +27,11 @@
       top: 5px;
       height: 40px;
       width: 40px;
+      &__avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+      }
     }
     &__new-letter {
       position: relative;
@@ -63,6 +68,7 @@
   width: 120px;
   background-color: #FFF;
   border-radius: 3px;
+  box-shadow: 0 0 4px #CCC;
   &__user-name {
     padding: 15px;
     &__font {
