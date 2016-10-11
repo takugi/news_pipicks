@@ -45,4 +45,86 @@
       }
     }
   }
+  &__news-comment {
+    width: 550px;
+    margin: 10px auto 0;
+    background-color: #FFF;
+    &__pick-editor {
+      @include clearfix();
+      border-bottom: 1px solid #EAEAEA;
+      &__cover {
+        float: left;
+        padding: 16px 24px;
+        &__avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 40px;
+        }
+      }
+      &__comment {
+        float: left;
+        padding: 16px 30px 16px 0;
+        &__form {
+          padding-left: 10px;
+          width: 200px;
+          height: 40px;
+          line-height: 40px;
+          font-size: 15px;
+        }
+      }
+      &__pick {
+        float: right;
+        padding: 18px 25px 0 0;
+        &__btn {
+          padding: 10px 25px;
+          background-color: #27375c;
+          border: 1px solid #27375c;
+          border-radius: 2px;
+          font-size: 14px;
+          color: #FFF;
+        }
+      }
+    }
+    &__comments {
+      &__individual {
+        border-bottom: 1px solid #EAEAEA;
+        margin: 0 24px;
+        padding: 16px 0;
+        &__user {
+          @include clearfix();
+          &__cover {
+            float: left;
+            &__avatar {
+              width: 40px;
+              height: 40px;
+            }
+          }
+          &__info {
+            float: left;
+            margin-left: 16px;
+            &__name {
+              margin-top: 5px;
+              &__font {
+                color: #15274D;
+                font-size: 16px;
+                font-weight: bold;
+              }
+            }
+            &__created-at {
+              margin-top: 5px;
+              color: #999;
+              font-size: 12px;
+            }
+          }
+        }
+        &__content {
+          margin-top: 10px;
+          padding-left: 56px;
+          line-height: 25px;
+          font-size: 14px;
+          color: #222;
+        }
+      }
+    }
+  }
 }
