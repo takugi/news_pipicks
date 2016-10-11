@@ -1,9 +1,10 @@
 .container__user-area
   .container__user-area__user
     .container__user-area__user__thumbnail
-      = image_tag "", style: "width: 60px; height: 60px;"
+      = image_tag current_user.avatar, class: "container__user-area__user__thumbnail__avatar"
     .container__user-area__user__name
-      %h2 nagano
+      %h2
+        = current_user.full_name
   .container__user-area__follow-info
     .container__user-area__follow-info__following
       .container__user-area__follow-info__following__count
