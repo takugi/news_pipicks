@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @comments = @user.comments.order("updated_at desc")
   end
 
   def edit
