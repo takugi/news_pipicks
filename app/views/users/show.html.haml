@@ -11,5 +11,5 @@
         .container__user-box__user__left-info__profile
           = @user.profile
   .container__letter-container
-    = render partial: "users/letter", collection: @comments, as: "comment", locals: { user: @user }
+    = render partial: "users/letter", collection: @letters, locals: { user: @user }
 
