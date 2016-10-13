@@ -16,13 +16,9 @@
   .container__letter-container__individual-letter__user-comment
     %p ユーザーコメントの一部
   .container__letter-container__individual-letter__pickers
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
+    - if letter.comments.length > 0
+      - letter.comments.first(5).each do |comment|
+        = image_tag comment.user.avatar, class: "container__letter-container__individual-letter__pickers__individual-picker"
+    - else
+      = image_tag "", class: "container__letter-container__individual-letter__pickers__individual-picker"
+
