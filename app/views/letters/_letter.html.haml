@@ -1,0 +1,28 @@
+.container__letter-container__individual-letter
+  .container__letter-container__individual-letter__thumbnail
+    = link_to letter_path(letter) do
+      = image_tag letter.image, class: "container__letter-container__individual-letter__thumbnail__image"
+  .container__letter-container__individual-letter__title
+    %h2
+      = link_to letter.title, letter_path(letter), class: "container__letter-container__individual-letter__title__font"
+  .container__letter-container__individual-letter__user
+    .container__letter-container__individual-letter__user__thumbnail
+      = image_tag "", class: "container__letter-container__individual-letter__user__thumbnail__image"
+    .container__letter-container__individual-letter__user__info
+      .container__letter-container__individual-letter__user__info__name
+        %h3 名前
+      .container__letter-container__individual-letter__user__info__profile
+        %p プロフィール
+  .container__letter-container__individual-letter__user-comment
+    %p ユーザーコメントの一部
+  .container__letter-container__individual-letter__pickers
+    .container__letter-container__individual-letter__pickers__individual-picker
+      = image_tag "", style: "width: 100%; height: 100%;"
+    .container__letter-container__individual-letter__pickers__individual-picker
+      = image_tag "", style: "width: 100%; height: 100%;"
+    .container__letter-container__individual-letter__pickers__individual-picker
+      = image_tag "", style: "width: 100%; height: 100%;"
+    .container__letter-container__individual-letter__pickers__individual-picker
+      = image_tag "", style: "width: 100%; height: 100%;"
+    .container__letter-container__individual-letter__pickers__individual-picker
+      = image_tag "", style: "width: 100%; height: 100%;"
