@@ -24,6 +24,9 @@
       }
       &__name {
         text-align: center;
+        &__font {
+          color: black;
+        }
       }
     }
     &__follow-info {
@@ -71,7 +74,7 @@
     @include clearfix();
     padding-left: 200px;
     min-width: 600px;
-    width: 100%;
+    width: 90%;
     &__individual-letter {
       margin: 10px;
       float: left;
@@ -99,6 +102,10 @@
           float: left;
           width: 50px;
           height: 50px;
+          &__image {
+            width: 100%;
+            height: 100%;
+          }
         }
         &__info {
           float: left;

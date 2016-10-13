@@ -10,3 +10,6 @@
           %p 総 Like 数: 700
         .container__user-box__user__left-info__profile
           = @user.profile
+  .container__letter-container
+    = render partial: "users/letter", collection: @letters, locals: { user: @user }
+

@@ -1,10 +1,12 @@
 .container__user-area
   .container__user-area__user
     .container__user-area__user__thumbnail
-      = image_tag current_user.avatar, class: "container__user-area__user__thumbnail__avatar"
+      = link_to user_path(current_user) do
+        = image_tag current_user.avatar, class: "container__user-area__user__thumbnail__avatar"
     .container__user-area__user__name
       %h2
-        = current_user.full_name
+        = link_to user_path(current_user), class: "container__user-area__user__name__font" do
+          = current_user.full_name
   .container__user-area__follow-info
     .container__user-area__follow-info__following
       .container__user-area__follow-info__following__count

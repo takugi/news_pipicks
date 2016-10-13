@@ -1,6 +1,7 @@
 class LettersController < ApplicationController
 
   before_action :set_letter, only: [:show]
+  before_action :set_comments, only: [:show]
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
@@ -22,6 +23,7 @@ class LettersController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
 
@@ -32,5 +34,9 @@ class LettersController < ApplicationController
 
   def set_letter
     @letter = Letter.find(params[:id])
+  end
+
+  def set_comments
+    @comments = @letter.comments
   end
 end

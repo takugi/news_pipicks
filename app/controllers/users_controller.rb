@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @letters = Letter.search_with_user_comment_letter(@user)
   end
 
   def edit

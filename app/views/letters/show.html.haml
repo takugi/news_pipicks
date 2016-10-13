@@ -14,3 +14,27 @@
         = time_ago_in_words @letter.created_at
     .container__contents-area__read-more
       = link_to "続きを読む", @letter.url, class: "container__contents-area__read-more__btn"
+
+  .container__news-comment
+    .container__news-comment__pick-editor
+      .container__news-comment__pick-editor__cover
+        = image_tag current_user.avatar, class: "container__news-comment__pick-editor__cover__avatar"
+      = form_for [@letter, @comment] ,method: :create do |f|
+        .container__news-comment__pick-editor__comment
+          = f.text_field :content, class: "container__news-comment__pick-editor__comment__form", placeholder: "コメントを書く（任意）"
+        .container__news-comment__pick-editor__pick
+          = f.submit "Pick", class: "container__news-comment__pick-editor__pick__btn"
+    .container__news-comment__comments
+      - @comments.each do |comment|
+        .container__news-comment__comments__individual
+          .container__news-comment__comments__individual__user
+            .container__news-comment__comments__individual__user__cover
+              = link_to user_path(comment.user) do
+                = image_tag comment.user.avatar, class: "container__news-comment__comments__individual__user__cover__avatar"
+            .container__news-comment__comments__individual__user__info
+              .container__news-comment__comments__individual__user__info__name
+                = link_to comment.user.full_name, user_path(comment.user), class: "container__news-comment__comments__individual__user__info__name__font"
+              .container__news-comment__comments__individual__user__info__created-at
+                = time_ago_in_words comment.created_at
+          .container__news-comment__comments__individual__content
+            = comment.content
