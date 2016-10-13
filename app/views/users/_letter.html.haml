@@ -1,10 +1,10 @@
 .container__letter-container__individual-letter
   .container__letter-container__individual-letter__thumbnail
-    = link_to letter_path(comment.letter) do
-      = image_tag comment.letter.image, class: "container__letter-container__individual-letter__thumbnail__image"
+    = link_to letter_path(letter) do
+      = image_tag letter.image, class: "container__letter-container__individual-letter__thumbnail__image"
   .container__letter-container__individual-letter__title
     %h2
-      = link_to comment.letter.title, letter_path(comment.letter), class: "container__letter-container__individual-letter__title__font"
+      = link_to letter.title, letter_path(letter), class: "container__letter-container__individual-letter__title__font"
   .container__letter-container__individual-letter__user
     .container__letter-container__individual-letter__user__thumbnail
       = image_tag @user.avatar, class: "container__letter-container__individual-letter__user__thumbnail__image"
@@ -17,15 +17,7 @@
           = @user.profile
   .container__letter-container__individual-letter__user-comment
     %p
-      = comment.content
+      = letter.user_comment(@user).content
   .container__letter-container__individual-letter__pickers
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
-    .container__letter-container__individual-letter__pickers__individual-picker
-      = image_tag "", style: "width: 100%; height: 100%;"
+    - letter.comments.first(5).each do |comment|
+      = image_tag comment.user.avatar, class: "container__letter-container__individual-letter__pickers__individual-picker"
