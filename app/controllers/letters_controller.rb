@@ -13,10 +13,10 @@ class LettersController < ApplicationController
   end
 
   def create
-    letter = Letter.new(url: url_params)
+    letter = Letter.new(url_params)
     if letter.save
       letter.create_letter
-      redirect_to root_path
+      redirect_to letter_path(letter)
     else
       redirect_to new_letter_path
     end
@@ -29,7 +29,7 @@ class LettersController < ApplicationController
 
   private
   def url_params
-    params.require(:url)
+    params.permit(:url)
   end
 
   def set_letter
