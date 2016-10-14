@@ -3,20 +3,11 @@ class LikesController < ApplicationController
   before_action :set_letter, only: [:create, :destroy]
 
   def create
-    @like = Like.new(likes_params)
-    if @like.save
-      redirect_to letter_path(@letter)
-    else
-      redirect_to letter_path(@letter)
-    end
+    Like.create(likes_params)
   end
 
   def destroy
-    if Like.find_by(likes_params).destroy
-      redirect_to letter_path(@letter)
-    else
-      redirect_to letter_path(@letter)
-    end
+    Like.find_by(likes_params).destroy
   end
 
   private
@@ -26,5 +17,9 @@ class LikesController < ApplicationController
 
   def set_letter
     @letter = Letter.find(params[:letter_id])
+  end
+
+  def set_comment
+    @comment = Comment.find_by(letter_id: @letter.id, user_id: current_user.id)
   end
 end
