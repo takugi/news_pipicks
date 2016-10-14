@@ -6,10 +6,10 @@
       = link_to @letter.url do
         = image_tag @letter.image, class: "container__contents-area__letter-image__thumbnail"
         .container__contents-area__letter-image__thumbnail__picks-box
-          .container__contents-area__letter-image__thumbnail__picks-box__size
-            = @letter.comments.length
           .container__contents-area__letter-image__thumbnail__picks-box__picks
             Picks
+          .container__contents-area__letter-image__thumbnail__picks-box__size
+            = @letter.comments.length
     .container__contents-area__letter-title
       = link_to @letter.title, @letter.url, class: "container__contents-area__letter-title__font"
     .container__contents-area__meta
@@ -41,5 +41,20 @@
                 = link_to comment.user.full_name, user_path(comment.user), class: "container__news-comment__comments__individual__user__info__name__font"
               .container__news-comment__comments__individual__user__info__created-at
                 = time_ago_in_words comment.created_at
-          .container__news-comment__comments__individual__content
-            = comment.content
+          .container__news-comment__comments__individual__comment
+            .container__news-comment__comments__individual__comment__content
+              = comment.content
+            .container__news-comment__comments__individual__comment__like-container
+              .container__news-comment__comments__individual__comment__like-container__like-panel
+                - unless comment.likes.exists?(user_id: current_user.id)
+                  = link_to letter_comment_likes_path(@letter, comment), controller: :likes, method: :post, class: "container__news-comment__comments__individual__comment__like-container__like-panel__like-link" do
+                    .container__news-comment__comments__individual__comment__like-container__like-panel__like-link__likes-count
+                      = comment.likes.length
+                    .container__news-comment__comments__individual__comment__like-container__like-panel__like-link__likes
+                      Likes
+                - else
+                  = link_to letter_comment_like_path(@letter, comment, comment.user_like(current_user)), controller: :likes, method: :delete, class: "container__news-comment__comments__individual__comment__like-container__like-panel__like-link" do
+                    .container__news-comment__comments__individual__comment__like-container__like-panel__like-link__likes-count-red
+                      = comment.likes.length
+                    .container__news-comment__comments__individual__comment__like-container__like-panel__like-link__likes-red
+                      Likes
