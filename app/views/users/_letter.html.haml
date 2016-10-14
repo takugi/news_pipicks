@@ -2,6 +2,11 @@
   .container__letter-container__individual-letter__thumbnail
     = link_to letter_path(letter) do
       = image_tag letter.image, class: "container__letter-container__individual-letter__thumbnail__image"
+      .container__letter-container__individual-letter__thumbnail__picks-box
+        .container__letter-container__individual-letter__thumbnail__picks-box__size
+          = letter.comments.length
+        .container__letter-container__individual-letter__thumbnail__picks-box__picks
+          Picks
   .container__letter-container__individual-letter__title
     %h2
       = link_to letter.title, letter_path(letter), class: "container__letter-container__individual-letter__title__font"
