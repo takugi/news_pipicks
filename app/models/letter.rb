@@ -10,6 +10,15 @@ class Letter < ActiveRecord::Base
     self.comments.find_by(user_id: user.id)
   end
 
+  def max_like_comment_user
+    comment = self.comments.order("likes_count desc").first(1)[0]
+    if comment.nil?
+      nil
+    else
+      User.find(comment.user_id)
+    end
+  end
+
   def create_letter
     agent = Mechanize.new
     page = agent.get(self.url)
