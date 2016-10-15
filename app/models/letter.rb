@@ -2,7 +2,7 @@ class Letter < ActiveRecord::Base
 
   scope :search_with_user_comment_letter, ->(user) { where(id: user.comments.select(:letter_id).distinct) }
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :url, format: URI::regexp(%w(http https))
 
