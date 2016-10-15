@@ -141,6 +141,16 @@
               color: #999;
               font-size: 12px;
             }
+            &__destroy {
+              padding: 5px 10px;
+              font-size: 14px;
+              color: black;
+              position: relative;
+              bottom: 20px;
+              left: 400px;
+              border-radius: 2px;
+              box-shadow: 0 0 4px #CCC;
+            }
           }
         }
         &__comment {
