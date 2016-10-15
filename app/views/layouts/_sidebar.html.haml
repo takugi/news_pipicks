@@ -8,13 +8,13 @@
         = link_to user_path(current_user), class: "container__user-area__user__name__font" do
           = current_user.full_name
   .container__user-area__follow-info
-    .container__user-area__follow-info__following
+    = link_to following_user_path(current_user), class: "container__user-area__follow-info__following" do
       .container__user-area__follow-info__following__count
-        %p 21
+        = current_user.following.count
       .container__user-area__follow-info__following__caption
         %p フォロー
-    .container__user-area__follow-info__follower
+    = link_to followers_user_path(current_user), class: "container__user-area__follow-info__follower" do
       .container__user-area__follow-info__follower__count
-        %p 32
+        = current_user.followers.count
       .container__user-area__follow-info__follower__caption
         %p フォロワー
