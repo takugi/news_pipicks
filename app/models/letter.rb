@@ -7,11 +7,11 @@ class Letter < ActiveRecord::Base
   validates :url, format: URI::regexp(%w(http https))
 
   def user_comment(user)
-    self.comments.find_by(user_id: user.id)
+    comments.find_by(user_id: user.id)
   end
 
-  def max_like_comment_user
-    comment = self.comments.order("likes_count desc").first(1)[0]
+  def max_like_user
+    comment = comments.order("likes_count desc").first(1)[0]
     if comment.nil?
       nil
     else
