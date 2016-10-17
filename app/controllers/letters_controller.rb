@@ -1,42 +1,34 @@
 class LettersController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_letter, only: [:show]
-  before_action :set_comments, only: [:show]
 
   def index
     @letters = Letter.order("created_at desc")
   end
 
   def new
-    @letter = Letter.new
   end
 
   def create
     letter = Letter.new(url_params)
     if letter.save
       letter.create_letter
+      flash[:notice] = "正常に投稿できました。"
       redirect_to letter_path(letter)
     else
-      redirect_to new_letter_path
+      flash[:alert] = "投稿に失敗しました。"
+      redirect_to :back
     end
   end
 
   def show
+    @letter = Letter.find(params[:id])
+    @comments = @letter.comments
     @comment = Comment.new
   end
 
-
   private
-  def url_params
-    params.permit(:url)
-  end
-
-  def set_letter
-    @letter = Letter.find(params[:id])
-  end
-
-  def set_comments
-    @comments = @letter.comments
-  end
+    def url_params
+      params.permit(:url)
+    end
 end
