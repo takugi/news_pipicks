@@ -8,10 +8,12 @@
     = csrf_meta_tags
   %body
     = render partial: 'layouts/header'
-    %p.notice
-      = notice
-    %p.alert
-      = alert
+    - if flash[:notice].present?
+      .notice
+        = flash[:notice]
+    - if flash[:alert].present?
+      .alert
+        = flash[:alert]
     = yield
     = render partial: 'layouts/footer'
 
