@@ -1,20 +1,42 @@
-.container__user-area
-  .container__user-area__user
-    .container__user-area__user__thumbnail
-      = link_to user_path(current_user) do
-        = image_tag current_user.avatar, class: "container__user-area__user__thumbnail__avatar"
-    .container__user-area__user__name
-      %h2
-        = link_to user_path(current_user), class: "container__user-area__user__name__font" do
-          = current_user.full_name
-  .container__user-area__follow-info
-    = link_to following_user_path(current_user), class: "container__user-area__follow-info__following" do
-      .container__user-area__follow-info__following__count
-        = current_user.following.count
-      .container__user-area__follow-info__following__caption
-        %p フォロー
-    = link_to followers_user_path(current_user), class: "container__user-area__follow-info__follower" do
-      .container__user-area__follow-info__follower__count
-        = current_user.followers.count
-      .container__user-area__follow-info__follower__caption
-        %p フォロワー
+- if user_signed_in?
+  .container__user-area
+    .container__user-area__user
+      .container__user-area__user__thumbnail
+        = link_to user_path(current_user) do
+          = image_tag current_user.avatar, class: "container__user-area__user__thumbnail__avatar"
+      .container__user-area__user__name
+        %h2
+          = link_to user_path(current_user), class: "container__user-area__user__name__font" do
+            = current_user.full_name
+    .container__user-area__follow-info
+      = link_to following_user_path(current_user), class: "container__user-area__follow-info__following" do
+        .container__user-area__follow-info__following__count
+          = current_user.following.count
+        .container__user-area__follow-info__following__caption
+          %p フォロー
+      = link_to followers_user_path(current_user), class: "container__user-area__follow-info__follower" do
+        .container__user-area__follow-info__follower__count
+          = current_user.followers.count
+        .container__user-area__follow-info__follower__caption
+          %p フォロワー
+- else
+  .container__user-area
+    .container__user-area__user
+      .container__user-area__user__thumbnail
+        = link_to new_user_registration_path do
+          = image_tag "child.jpeg", class: "container__user-area__user__thumbnail__avatar"
+      .container__user-area__user__name
+        %h2
+          = link_to new_user_registration_path, class: "container__user-area__user__name__font" do
+            = "No Account"
+    .container__user-area__follow-info
+      = link_to new_user_registration_path, class: "container__user-area__follow-info__following" do
+        .container__user-area__follow-info__following__count
+          = "-"
+        .container__user-area__follow-info__following__caption
+          %p フォロー
+      = link_to new_user_registration_path, class: "container__user-area__follow-info__follower" do
+        .container__user-area__follow-info__follower__count
+          = "-"
+        .container__user-area__follow-info__follower__caption
+          %p フォロワー
