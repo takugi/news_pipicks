@@ -3,10 +3,12 @@
     width: 796px;
     margin: 24px auto;
     &__items {
+      @include clearfix();
       &__user-info {
+        float: left;
         margin: 7.5px;
         padding: 16px;
-        width: 198px;
+        width: 223px;
         height: 93px;
         background-color: #FFF;
         &__upper-block {
@@ -64,8 +66,9 @@
             }
           }
           &__follow {
+            float: right;
+            padding-top: 10px;
             &__btn {
-              margin-top: 10px;
               padding: 5px 10px;
               border: 1px solid #222;
               border-radius: 2px;
@@ -76,7 +79,6 @@
               }
             }
             &__btn-blue {
-              margin-top: 10px;
               padding: 5px 10px;
               border: 1px solid #222;
               border-radius: 2px;
