@@ -1,37 +1,6 @@
 .container
-  .container__user-box
-    .container__user-box__user
-      .container__user-box__user__right-info
-        = image_tag @user.avatar.presence || "default_avatar.jpeg", class: "container__user-box__user__right-info__avatar"
-      .container__user-box__user__left-info
-        .container__user-box__user__left-info__name
-          = @user.full_name
-        .container__user-box__user__left-info__like-count
-          %p 総 Like 数: #{@user.sum_like}
-        .container__user-box__user__left-info__profile
-          = @user.profile
-  .container__navbar
-    .container__navbar__box
-      .container__navbar__box__picks
-        %p Picks
-      = link_to following_user_path(current_user), class: "container__navbar__box__following-box" do
-        .container__navbar__box__following-box__count
-          = @user.following.count
-        .container__navbar__box__following-box__caption
-          %p フォロー
-      = link_to followers_user_path(current_user), class: "container__navbar__box__follower-box" do
-        .container__navbar__box__follower-box__count
-          = @user.followers.count
-        .container__navbar__box__follower-box__caption
-          %p フォロワー
-      .container__navbar__box__follow-box
-        - if @user.followers.include?(current_user)
-          = form_for(current_user.active_relationships.find_by(following_id: @user.id), html: { method: :delete }) do |f|
-            = f.submit "フォロー中", class: "container__navbar__box__follow-box__btn-blue"
-        - else
-          = form_for(current_user.active_relationships.build) do |f|
-            = hidden_field_tag :following_id, @user.id
-            = f.submit "フォロー", class: "container__navbar__box__follow-box__btn"
+  = render partial: "users/user_info", locals: { user: @user }
+  = render partial: "users/navbar", locals: { user: @user }
   .container__letter-container
     = render partial: "users/letter", collection: @letters, locals: { user: @user }
 

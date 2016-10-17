@@ -1,0 +1,40 @@
+.container__navbar
+  .container__navbar__box
+    - if params[:controller] == "users" && params[:action] == "show"
+      .container__navbar__box__picks
+        %p Picks
+    - else
+      = link_to user_path(@user), class: "container__navbar__box__picks" do
+        %p Picks
+    - if params[:controller] == "users" && params[:action] == "following"
+      .container__navbar__box__following-box
+        .container__navbar__box__following-box__count
+          = @user.following.count
+        .container__navbar__box__following-box__caption
+          %p フォロー
+    - else
+      = link_to following_user_path(current_user), class: "container__navbar__box__following-box" do
+        .container__navbar__box__following-box__count
+          = @user.following.count
+        .container__navbar__box__following-box__caption
+          %p フォロー
+    - if params[:controller] == "users" && params[:action] == "followers"
+      .container__navbar__box__follower-box
+        .container__navbar__box__follower-box__count
+          = @user.followers.count
+        .container__navbar__box__follower-box__caption
+          %p フォロワー
+    - else
+      = link_to followers_user_path(current_user), class: "container__navbar__box__follower-box" do
+        .container__navbar__box__follower-box__count
+          = @user.followers.count
+        .container__navbar__box__follower-box__caption
+          %p フォロワー
+    .container__navbar__box__follow-box
+      - if @user.followers.include?(current_user)
+        = form_for(current_user.active_relationships.find_by(following_id: @user.id), html: { method: :delete }) do |f|
+          = f.submit "フォロー中", class: "container__navbar__box__follow-box__btn-blue"
+      - else
+        = form_for(current_user.active_relationships.build) do |f|
+          = hidden_field_tag :following_id, @user.id
+          = f.submit "フォロー", class: "container__navbar__box__follow-box__btn"
