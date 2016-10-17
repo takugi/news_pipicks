@@ -14,19 +14,19 @@ class LikesController < ApplicationController
   end
 
   private
-  def create_params
-    params.permit(:comment_id).merge(user_id: current_user.id)
-  end
+    def create_params
+      params.permit(:comment_id).merge(user_id: current_user.id)
+    end
 
-  def set_letter
-    @letter = Letter.find(params[:letter_id])
-  end
+    def set_letter
+      @letter = Letter.find(params[:letter_id])
+    end
 
-  def set_comment
-    @comment = Comment.find_by(id: params[:comment_id])
-  end
+    def set_comment
+      @comment = Comment.find(params[:comment_id])
+    end
 
-  def set_id_num
-    @id_num = params[:comment_id]
-  end
+    def set_id_num
+      @id_num = params[:comment_id]
+    end
 end
