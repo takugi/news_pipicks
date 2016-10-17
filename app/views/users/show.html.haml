@@ -2,12 +2,12 @@
   .container__user-box
     .container__user-box__user
       .container__user-box__user__right-info
-        = image_tag @user.avatar, class: "container__user-box__user__right-info__avatar"
+        = image_tag @user.avatar.presence || "default_avatar.jpeg", class: "container__user-box__user__right-info__avatar"
       .container__user-box__user__left-info
         .container__user-box__user__left-info__name
           = @user.full_name
         .container__user-box__user__left-info__like-count
-          %p 総 Like 数: 700
+          %p 総 Like 数: #{@user.sum_like}
         .container__user-box__user__left-info__profile
           = @user.profile
   .container__navbar

@@ -4,43 +4,42 @@
   .container__contents-area
     .container__contents-area__letter-image
       = link_to @letter.url do
-        = image_tag @letter.image, class: "container__contents-area__letter-image__thumbnail"
+        = image_tag @letter.image.presence || "default_letter_image.jpg", class: "container__contents-area__letter-image__thumbnail"
         .container__contents-area__letter-image__thumbnail__picks-box
           .container__contents-area__letter-image__thumbnail__picks-box__picks
             Picks
           .container__contents-area__letter-image__thumbnail__picks-box__size
             = @letter.comments.length
     .container__contents-area__letter-title
-      = link_to @letter.title, @letter.url, class: "container__contents-area__letter-title__font"
+      = link_to @letter.title.presence || "No title", @letter.url, class: "container__contents-area__letter-title__font"
     .container__contents-area__meta
       .container__contents-area__meta__site-name
-        = @letter.site_name
+        = @letter.site_name.presence || "No site name"
       .container__contents-area__meta__time-ago
         = time_ago_in_words @letter.created_at
     .container__contents-area__read-more
       = link_to "続きを読む", @letter.url, class: "container__contents-area__read-more__btn"
 
   .container__news-comment
-    - if user_signed_in?
-      - if @letter.user_comment(current_user).nil?
-        .container__news-comment__pick-editor
-          .container__news-comment__pick-editor__cover
-            = image_tag current_user.avatar, class: "container__news-comment__pick-editor__cover__avatar"
-          = form_for [@letter, @comment] ,method: :create do |f|
-            .container__news-comment__pick-editor__comment
-              = f.text_field :content, class: "container__news-comment__pick-editor__comment__form", placeholder: "コメントを書く（任意）"
-            .container__news-comment__pick-editor__pick
-              = f.submit "Pick", class: "container__news-comment__pick-editor__pick__btn"
+    - if user_signed_in? && @letter.user_comment(current_user).nil?
+      .container__news-comment__pick-editor
+        .container__news-comment__pick-editor__cover
+          = image_tag current_user.avatar.presence || "default_avatar.jpeg", class: "container__news-comment__pick-editor__cover__avatar"
+        = form_for [@letter, @comment] ,method: :create do |f|
+          .container__news-comment__pick-editor__comment
+            = f.text_field :content, class: "container__news-comment__pick-editor__comment__form", placeholder: "コメントを書く（任意）"
+          .container__news-comment__pick-editor__pick
+            = f.submit "Pick", class: "container__news-comment__pick-editor__pick__btn"
     .container__news-comment__comments
       - @comments.each do |comment|
         .container__news-comment__comments__individual
           .container__news-comment__comments__individual__user
             .container__news-comment__comments__individual__user__cover
               = link_to user_path(comment.user) do
-                = image_tag comment.user.avatar, class: "container__news-comment__comments__individual__user__cover__avatar"
+                = image_tag comment.user.avatar.presence || "default_avatar.jpeg", class: "container__news-comment__comments__individual__user__cover__avatar"
             .container__news-comment__comments__individual__user__info
               .container__news-comment__comments__individual__user__info__name
-                = link_to comment.user.full_name, user_path(comment.user), class: "container__news-comment__comments__individual__user__info__name__font"
+                = link_to comment.user.full_name.presence || "No name", user_path(comment.user), class: "container__news-comment__comments__individual__user__info__name__font"
               .container__news-comment__comments__individual__user__info__created-at
                 = time_ago_in_words comment.created_at
               - if current_user == comment.user

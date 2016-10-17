@@ -1,7 +1,7 @@
 .container__letter-container__individual-letter
   .container__letter-container__individual-letter__thumbnail
     = link_to letter_path(letter) do
-      = image_tag letter.image, class: "container__letter-container__individual-letter__thumbnail__image"
+      = image_tag letter.image.presence || "default_letter_image.jpg", class: "container__letter-container__individual-letter__thumbnail__image"
       .container__letter-container__individual-letter__thumbnail__picks-box
         .container__letter-container__individual-letter__thumbnail__picks-box__size
           = letter.comments.length
@@ -9,20 +9,20 @@
           Picks
   .container__letter-container__individual-letter__title
     %h2
-      = link_to letter.title, letter_path(letter), class: "container__letter-container__individual-letter__title__font"
+      = link_to letter.title.presence || "No title", letter_path(letter), class: "container__letter-container__individual-letter__title__font"
   .container__letter-container__individual-letter__user
     .container__letter-container__individual-letter__user__thumbnail
-      = image_tag @user.avatar, class: "container__letter-container__individual-letter__user__thumbnail__image"
+      = image_tag @user.avatar.presence || "default_avatar", class: "container__letter-container__individual-letter__user__thumbnail__image"
     .container__letter-container__individual-letter__user__info
       .container__letter-container__individual-letter__user__info__name
         %h3
-          = @user.full_name
+          = @user.full_name.presence || "No name"
       .container__letter-container__individual-letter__user__info__profile
         %p
           = @user.profile
   .container__letter-container__individual-letter__user-comment
     %p
-      = letter.user_comment(@user).content
+      = letter.user_comment(@user).content.presence || "No comment"
   .container__letter-container__individual-letter__pickers
     - letter.comments.first(5).each do |comment|
-      = image_tag comment.user.avatar, class: "container__letter-container__individual-letter__pickers__individual-picker"
+      = image_tag comment.user.avatar.presence || "default_avatar.jpeg", class: "container__letter-container__individual-letter__pickers__individual-picker"
