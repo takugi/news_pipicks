@@ -4,8 +4,8 @@
       .container__tab-contents__items__user-info
         .container__tab-contents__items__user-info__upper-block
           = link_to user_path(follow) do
-            = image_tag follow.avatar, class: "container__tab-contents__items__user-info__upper-block__avatar"
-          = link_to follow.full_name, user_path(follow), class: "container__tab-contents__items__user-info__upper-block__name"
+            = image_tag follow.avatar.presence || "default_avatar.jpeg", class: "container__tab-contents__items__user-info__upper-block__avatar"
+          = link_to follow.full_name.presence || "No name", user_path(follow), class: "container__tab-contents__items__user-info__upper-block__name"
         .container__tab-contents__items__user-info__lower-block
           =link_to following_user_path(follow.following[0]), class: "container__tab-contents__items__user-info__lower-block__following" do
             .container__tab-contents__items__user-info__lower-block__following__caption
