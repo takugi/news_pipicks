@@ -1,6 +1,6 @@
 class Letter < ActiveRecord::Base
 
-  scope :search_with_user_comment_letter, ->(user) { where(id: user.comments.select(:letter_id).distinct) }
+  scope :user_letter, ->(user) { where(id: user.comments.select(:letter_id).distinct) }
 
   has_many :comments, dependent: :destroy
 
