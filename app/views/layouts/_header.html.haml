@@ -17,7 +17,7 @@
 - if user_signed_in?
   #user-menu-container.user-menu
     .user-menu__user-name
-      = link_to "takugi", user_path(current_user), class: "user-menu__user-name__font"
+      = link_to current_user.full_name, user_path(current_user), class: "user-menu__user-name__font"
     .user-menu__user-edit
       = link_to "設定", edit_user_path(current_user), class: "user-menu__user-edit__font"
     .user-menu__logout

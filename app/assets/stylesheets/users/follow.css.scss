@@ -1,0 +1,97 @@
+.container {
+  &__tab-contents {
+    width: 796px;
+    margin: 24px auto;
+    &__items {
+      @include clearfix();
+      &__user-info {
+        float: left;
+        margin: 7.5px;
+        padding: 16px;
+        width: 223px;
+        height: 93px;
+        background-color: #FFF;
+        &__upper-block {
+          @include clearfix();
+          &__avatar {
+            float: left;
+            width: 42px;
+            height: 42px;
+          }
+          &__name {
+            float: left;
+            margin-left: 10px;
+            height: 20px;
+            font-size: 14px;
+            color: black;
+            font-weight: bold;
+          }
+        }
+        &__lower-block {
+          @include clearfix();
+          margin-top: 11px;
+          &__following {
+            float: left;
+            margin: 5px 0;
+            padding: 0 4px;
+            text-align: center;
+            border-right: 1px solid #D9D9D9;
+            &__caption {
+              width: 48px;
+              font-size: 8px;
+              color: #999;
+            }
+            &__count {
+              margin-top: 5px;
+              width: 48px;
+              color: #15274D;
+              font-size: 12px;
+            }
+          }
+          &__follower {
+            float: left;
+            margin: 5px 0;
+            padding: 0 4px;
+            text-align: center;
+            &__caption {
+              width: 58px;
+              font-size: 8px;
+              color: #999;
+            }
+            &__count {
+              margin-top: 5px;
+              width: 58px;
+              color: #15274D;
+              font-size: 12px;
+            }
+          }
+          &__follow {
+            float: right;
+            padding-top: 10px;
+            &__btn {
+              padding: 5px 10px;
+              border: 1px solid #222;
+              border-radius: 2px;
+              background-color: white;
+              font-size: 10px;
+              &:hover {
+                opacity: 0.5;
+              }
+            }
+            &__btn-blue {
+              padding: 5px 10px;
+              border: 1px solid #222;
+              border-radius: 2px;
+              background-color: #15274D;
+              color: white;
+              font-size: 10px;
+              &:hover {
+                opacity: 0.5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

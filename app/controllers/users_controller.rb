@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update]
   before_action :authenticate_user!
+  before_action :set_user
 
   def show
     @letters = Letter.search_with_user_comment_letter(@user)
@@ -20,6 +20,14 @@ class UsersController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def following
+    @follows = @user.following
+  end
+
+  def followers
+    @follows = @user.followers
   end
 
   private

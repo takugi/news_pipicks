@@ -1,17 +1,20 @@
 class LikesController < ApplicationController
 
-  before_action :set_letter, only: [:create, :destroy]
+  before_action :authenticate_user!
+  before_action :set_letter
+  before_action :set_comment
+  before_action :set_id_num
 
   def create
-    Like.create(likes_params)
+    Like.create(create_params)
   end
 
   def destroy
-    Like.find_by(likes_params).destroy
+    Like.find(params[:id]).destroy
   end
 
   private
-  def likes_params
+  def create_params
     params.permit(:comment_id).merge(user_id: current_user.id)
   end
 
@@ -20,6 +23,10 @@ class LikesController < ApplicationController
   end
 
   def set_comment
-    @comment = Comment.find_by(letter_id: @letter.id, user_id: current_user.id)
+    @comment = Comment.find_by(id: params[:comment_id])
+  end
+
+  def set_id_num
+    @id_num = params[:comment_id]
   end
 end
