@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates_presence_of :first_name, :last_name
+
   def follow(other_user)
     active_relationships.create(following_id: other_user.id)
   end
