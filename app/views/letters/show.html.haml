@@ -21,15 +21,16 @@
       = link_to "続きを読む", @letter.url, class: "container__contents-area__read-more__btn"
 
   .container__news-comment
-    - if @letter.user_comment(current_user).nil?
-      .container__news-comment__pick-editor
-        .container__news-comment__pick-editor__cover
-          = image_tag current_user.avatar, class: "container__news-comment__pick-editor__cover__avatar"
-        = form_for [@letter, @comment] ,method: :create do |f|
-          .container__news-comment__pick-editor__comment
-            = f.text_field :content, class: "container__news-comment__pick-editor__comment__form", placeholder: "コメントを書く（任意）"
-          .container__news-comment__pick-editor__pick
-            = f.submit "Pick", class: "container__news-comment__pick-editor__pick__btn"
+    - if user_signed_in?
+      - if @letter.user_comment(current_user).nil?
+        .container__news-comment__pick-editor
+          .container__news-comment__pick-editor__cover
+            = image_tag current_user.avatar, class: "container__news-comment__pick-editor__cover__avatar"
+          = form_for [@letter, @comment] ,method: :create do |f|
+            .container__news-comment__pick-editor__comment
+              = f.text_field :content, class: "container__news-comment__pick-editor__comment__form", placeholder: "コメントを書く（任意）"
+            .container__news-comment__pick-editor__pick
+              = f.submit "Pick", class: "container__news-comment__pick-editor__pick__btn"
     .container__news-comment__comments
       - @comments.each do |comment|
         .container__news-comment__comments__individual
@@ -48,8 +49,11 @@
             .container__news-comment__comments__individual__comment__content
               = comment.content
             .container__news-comment__comments__individual__comment__like-container
-              .container__news-comment__comments__individual__comment__like-container__like-panel#like-btn
-                - unless comment.likes.exists?(user_id: current_user.id)
-                  = render partial: "letters/like_btn", locals: { comment: comment }
+              .container__news-comment__comments__individual__comment__like-container__like-panel{id: "like-btn-#{comment.id}"}
+                - if user_signed_in?
+                  - unless comment.likes.exists?(user_id: current_user.id)
+                    = render partial: "letters/like_btn", locals: { comment: comment }
+                  - else
+                    = render partial: "letters/like_btn_red", locals: { comment: comment }
                 - else
-                  = render partial: "letters/like_btn_red", locals: { comment: comment }
+                  = render partial: "letters/like_btn", locals: { comment: comment }
