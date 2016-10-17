@@ -1,4 +1,4 @@
-- unless letter.max_like_comment_user.nil?
+- unless letter.max_like_user.nil?
   .container__letter-container__individual-letter
     .container__letter-container__individual-letter__thumbnail
       = link_to letter_path(letter) do
@@ -11,19 +11,19 @@
     .container__letter-container__individual-letter__title
       %h2
         = link_to letter.title, letter_path(letter), class: "container__letter-container__individual-letter__title__font"
-    = link_to user_path(letter.max_like_comment_user), class: "container__letter-container__individual-letter__user" do
+    = link_to user_path(letter.max_like_user), class: "container__letter-container__individual-letter__user" do
       .container__letter-container__individual-letter__user__thumbnail
-        = image_tag letter.max_like_comment_user.avatar, class: "container__letter-container__individual-letter__user__thumbnail__image"
+        = image_tag letter.max_like_user.avatar, class: "container__letter-container__individual-letter__user__thumbnail__image"
       .container__letter-container__individual-letter__user__info
         .container__letter-container__individual-letter__user__info__name
           %h3
-            = letter.max_like_comment_user.full_name
+            = letter.max_like_user.full_name
         .container__letter-container__individual-letter__user__info__profile
           %p
-            = letter.max_like_comment_user.profile
+            = letter.max_like_user.profile
     = link_to letter_path(letter), class: "container__letter-container__individual-letter__user-comment" do
       %p
-        = letter.user_comment(letter.max_like_comment_user).content
+        = letter.user_comment(letter.max_like_user).content
     .container__letter-container__individual-letter__pickers
       - if letter.comments.length > 0
         - letter.comments.first(5).each do |comment|
