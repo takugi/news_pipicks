@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name
 
+  def sum_like
+    sum_likes = 0
+    self.comments.each do |comment|
+      sum_likes += comment.likes.length
+    end
+    sum_likes
+  end
+
   def follow(other_user)
     active_relationships.create(following_id: other_user.id)
   end
