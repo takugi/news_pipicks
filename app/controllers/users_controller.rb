@@ -17,11 +17,10 @@ class UsersController < ApplicationController
     if current_user == @user
       if @user.update(update_params)
         flash[:notice] = "ユーザー情報の編集に成功しました。"
-        redirect_to :back
       else
         flash[:alert] = "ユーザー情報の編集に失敗しました。"
-        redirect_to :back
       end
+      redirect_to :back
     else
       redirect_to root_path
     end
