@@ -11,7 +11,7 @@
     .container__letter-container__individual-letter__title
       %h2
         = link_to letter.title, letter_path(letter), class: "container__letter-container__individual-letter__title__font"
-    .container__letter-container__individual-letter__user
+    = link_to user_path(letter.max_like_comment_user), class: "container__letter-container__individual-letter__user" do
       .container__letter-container__individual-letter__user__thumbnail
         = image_tag letter.max_like_comment_user.avatar, class: "container__letter-container__individual-letter__user__thumbnail__image"
       .container__letter-container__individual-letter__user__info
@@ -21,10 +21,11 @@
         .container__letter-container__individual-letter__user__info__profile
           %p
             = letter.max_like_comment_user.profile
-    .container__letter-container__individual-letter__user-comment
+    = link_to letter_path(letter), class: "container__letter-container__individual-letter__user-comment" do
       %p
         = letter.user_comment(letter.max_like_comment_user).content
     .container__letter-container__individual-letter__pickers
       - if letter.comments.length > 0
         - letter.comments.first(5).each do |comment|
-          = image_tag comment.user.avatar, class: "container__letter-container__individual-letter__pickers__individual-picker"
+          = link_to user_path(comment.user) do
+            = image_tag comment.user.avatar, class: "container__letter-container__individual-letter__pickers__individual-picker"
