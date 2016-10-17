@@ -4,18 +4,23 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    @letters = Letter.search_with_user_comment_letter(@user)
+    @letters = Letter.user_letter(@user)
   end
 
   def edit
+    if current_user != @user
+      redirect_to root_path
+    end
   end
 
   def update
     if current_user == @user
       if @user.update(update_params)
-        redirect_to root_path
+        flash[:notice] = "ユーザー情報の編集に成功しました。"
+        redirect_to :back
       else
-        redirect_to edit_user_path(current_user)
+        flash[:alert] = "ユーザー情報の編集に失敗しました。"
+        redirect_to :back
       end
     else
       redirect_to root_path
@@ -36,6 +41,6 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    params.require(:user).permit(:avatar, :last_name, :firstname, :profile)
+    params.require(:user).permit(:avatar, :last_name, :first_name, :profile)
   end
 end
