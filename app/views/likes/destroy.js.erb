@@ -1,1 +1,1 @@
-$("#like-btn").html("<%= j render partial: 'letters/like_btn', locals: { comment: @letter.user_comment(current_user) }%>");
+$("#like-btn-<%= @i %>").html("<%= j render partial: 'letters/like_btn', locals: { comment: @comment }%>");
