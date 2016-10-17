@@ -5,23 +5,25 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(create_params)
     if @comment.save
-      redirect_to letter_path(@comment.letter)
+      redirect_to :back
     else
-      redirect_to letter_path(@comment.letter)
+      flash[:alert] = "コメントを作成できませんでした。"
+      redirect_to :back
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
-      redirect_to letter_path(@comment.letter)
+      redirect_to :back
     else
-      redirect_to letter_path(@comment.letter)
+      flash[:alert] = "コメントを削除できませんでした。"
+      redirect_to :back
     end
   end
 
   private
-  def create_params
-    params.require(:comment).permit(:content).merge(user_id: current_user.id, letter_id: params[:letter_id])
-  end
+    def create_params
+      params.require(:comment).permit(:content).merge(user_id: current_user.id, letter_id: params[:letter_id])
+    end
 end
