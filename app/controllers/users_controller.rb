@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    @letters = Letter.user_letter(@user)
+    @letters = @user.user_letters
   end
 
   def edit
