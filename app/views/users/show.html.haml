@@ -1,6 +1,6 @@
-.container
+.user-container
   = render partial: "users/user_info", locals: { user: @user }
   = render partial: "users/navbar", locals: { user: @user }
-  .container__letter-container
+  .user-container__letter-container
     = render partial: "users/letter", collection: @letters, locals: { user: @user }
 

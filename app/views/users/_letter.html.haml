@@ -1,28 +1,29 @@
-.container__letter-container__individual-letter
-  .container__letter-container__individual-letter__thumbnail
+.user-container__letter-container__individual-letter
+  .user-container__letter-container__individual-letter__thumbnail
     = link_to letter_path(letter) do
-      = image_tag letter.image.presence || "default_letter_image.jpg", class: "container__letter-container__individual-letter__thumbnail__image"
-      .container__letter-container__individual-letter__thumbnail__picks-box
-        .container__letter-container__individual-letter__thumbnail__picks-box__size
-          = letter.comments.length
-        .container__letter-container__individual-letter__thumbnail__picks-box__picks
-          Picks
-  .container__letter-container__individual-letter__title
+      = image_tag letter.image.presence || "default_letter_image.jpg", class: "user-container__letter-container__individual-letter__thumbnail__image"
+      .user-container__letter-container__individual-letter__thumbnail__picks-box
+        .user-container__letter-container__individual-letter__thumbnail__picks-box__cover
+          .user-container__letter-container__individual-letter__thumbnail__picks-box__cover__size
+            = letter.comments.length
+          .user-container__letter-container__individual-letter__thumbnail__picks-box__cover__picks
+            Picks
+  .user-container__letter-container__individual-letter__title
     %h2
-      = link_to letter.title.presence || "No title", letter_path(letter), class: "container__letter-container__individual-letter__title__font"
-  .container__letter-container__individual-letter__user
-    .container__letter-container__individual-letter__user__thumbnail
-      = image_tag @user.avatar.presence || "default_avatar", class: "container__letter-container__individual-letter__user__thumbnail__image"
-    .container__letter-container__individual-letter__user__info
-      .container__letter-container__individual-letter__user__info__name
+      = link_to letter.title.truncate(28).presence || "No title", letter_path(letter), class: "user-container__letter-container__individual-letter__title__font"
+  .user-container__letter-container__individual-letter__user
+    .user-container__letter-container__individual-letter__user__thumbnail
+      = image_tag @user.avatar.presence || "default_avatar", class: "user-container__letter-container__individual-letter__user__thumbnail__image"
+    .user-container__letter-container__individual-letter__user__info
+      .user-container__letter-container__individual-letter__user__info__name
         %h3
           = @user.full_name.presence || "No name"
-      .container__letter-container__individual-letter__user__info__profile
+      .user-container__letter-container__individual-letter__user__info__profile
         %p
-          = @user.profile
-  .container__letter-container__individual-letter__user-comment
+          = @user.profile.truncate(15)
+  .user-container__letter-container__individual-letter__user-comment
     %p
-      = letter.user_comment(@user).content.presence || "No comment"
-  .container__letter-container__individual-letter__pickers
+      = letter.user_comment(@user).content.truncate(50).presence || "No comment"
+  .user-container__letter-container__individual-letter__pickers
     - letter.comments.first(5).each do |comment|
-      = image_tag comment.user.avatar.presence || "default_avatar.jpeg", class: "container__letter-container__individual-letter__pickers__individual-picker"
+      = image_tag comment.user.avatar.presence || "default_avatar.jpeg", class: "user-container__letter-container__individual-letter__pickers__individual-picker"
