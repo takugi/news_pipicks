@@ -1,24 +1,24 @@
-.container__tab-contents
-  .container__tab-contents__items
+.user-container__tab-contents
+  .user-container__tab-contents__items
     - @follows.each do |follow|
-      .container__tab-contents__items__user-info
-        .container__tab-contents__items__user-info__upper-block
+      .user-container__tab-contents__items__user-info
+        .user-container__tab-contents__items__user-info__upper-block
           = link_to user_path(follow) do
-            = image_tag follow.avatar, class: "container__tab-contents__items__user-info__upper-block__avatar"
-          = link_to follow.full_name, user_path(follow), class: "container__tab-contents__items__user-info__upper-block__name"
-        .container__tab-contents__items__user-info__lower-block
-          =link_to following_user_path(follow.following[0]), class: "container__tab-contents__items__user-info__lower-block__following" do
-            .container__tab-contents__items__user-info__lower-block__following__caption
+            = image_tag follow.avatar.presence || "default_avatar.jpeg", class: "user-container__tab-contents__items__user-info__upper-block__avatar"
+          = link_to follow.full_name.presence || "No name", user_path(follow), class: "user-container__tab-contents__items__user-info__upper-block__name"
+        .user-container__tab-contents__items__user-info__lower-block
+          =link_to following_user_path(follow.following[0]), class: "user-container__tab-contents__items__user-info__lower-block__following" do
+            .user-container__tab-contents__items__user-info__lower-block__following__caption
               %span フォロー
-            .container__tab-contents__items__user-info__lower-block__following__count
+            .user-container__tab-contents__items__user-info__lower-block__following__count
               = follow.active_relationships.count
-          =link_to followers_user_path(follow), class: "container__tab-contents__items__user-info__lower-block__follower" do
-            .container__tab-contents__items__user-info__lower-block__follower__caption
+          =link_to followers_user_path(follow), class: "user-container__tab-contents__items__user-info__lower-block__follower" do
+            .user-container__tab-contents__items__user-info__lower-block__follower__caption
               %span フォロワー
-            .container__tab-contents__items__user-info__lower-block__follower__count
+            .user-container__tab-contents__items__user-info__lower-block__follower__count
               = follow.passive_relationships.count
-          .container__tab-contents__items__user-info__lower-block__follow
+          .user-container__tab-contents__items__user-info__lower-block__follow
             - if @user.followers.include?(current_user)
-              = link_to "フォロー中", relationship_path(follow.active_relationships.find_by(following_id: follow.id)), method: :delete, class: "container__tab-contents__items__user-info__lower-block__follow__btn-blue"
+              = link_to "フォロー中", relationship_path(follow.active_relationships.find_by(following_id: follow.id)), method: :delete, class: "user-container__tab-contents__items__user-info__lower-block__follow__btn-blue"
             - else
-              = link_to "フォロー", relationships_path(current_user.active_relationships), method: :create, class: "container__tab-contents__items__user-info__lower-block__follow__btn"
+              = link_to "フォロー", relationships_path(current_user.active_relationships), method: :create, class: "user-container__tab-contents__items__user-info__lower-block__follow__btn"

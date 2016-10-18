@@ -1,17 +1,33 @@
 class Letter < ActiveRecord::Base
 
-  scope :search_with_user_comment_letter, ->(user) { where(id: user.comments.select(:letter_id).distinct) }
-
-  has_many :comments, dependent: :destroy
+  has_many :comments, ->{ order("likes_count desc") }, dependent: :destroy
 
   validates :url, format: URI::regexp(%w(http https))
 
-  def user_comment(user)
-    self.comments.find_by(user_id: user.id)
+  def created_in_24hours?
+    now = Time.now
+    if (now - 24 * 60 * 60) <= self.created_at.time && self.created_at.time <= now
+      true
+    else
+      nil
+    end
   end
 
-  def max_like_comment_user
-    comment = self.comments.order("likes_count desc").first(1)[0]
+  def created_time
+    d = self.created_at
+    "#{d.year}年#{d.month}月#{d.day}日"
+  end
+
+  def best_five_comments
+    comments.first(5)
+  end
+
+  def user_comment(user)
+    comments.find_by(user_id: user.id)
+  end
+
+  def max_like_user
+    comment = comments.order("likes_count desc").first(1)[0]
     if comment.nil?
       nil
     else

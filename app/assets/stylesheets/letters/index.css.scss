@@ -71,14 +71,12 @@
       }
     }
   }
-
   &__letter-container {
     @include clearfix();
-    padding-left: 200px;
-    min-width: 600px;
-    width: 90%;
+    margin-left: 200px;
+    width: 1100px;
     &__individual-letter {
-      margin: 10px;
+      margin: 7px;
       float: left;
       width: 250px;
       background-color: #FFF;
@@ -89,39 +87,43 @@
           height: 100%;
         }
         &__picks-box {
-          @include clearfix();
           position: relative;
           bottom: 125px;
-          left: 184px;
-          display: inline-block;
-          padding: 7px 13px;
+          left: 179px;
+          text-align: center;
+          padding: 7px 0;
+          width: 70px;
           background-color: rgba(45, 45, 45, 0.5);
           border: 1px solid #FFFFFF;
-          &__size {
-            float: left;
-            font-size: 14px;
-            font-weight: bold;
-            color: #FFFFFF;
-          }
-          &__picks {
-            float: left;
-            line-height: 14px;
-            font-size: 10px;
-            font-weight: bold;
-            color: #FFFFFF;
+          &__cover {
+            display: inline;
+            &__size {
+              display: inline;
+              font-size: 14px;
+              font-family: Helvetica;
+              color: #FFFFFF;
+            }
+            &__picks {
+              display: inline;
+              line-height: 14px;
+              font-size: 10px;
+              font-family: Helvetica;
+              color: #FFFFFF;
+            }
           }
         }
       }
       &__title {
-        padding: 10px;
+        margin: 10px;
         height: 50px;
         &__font {
+          line-height: 25px;
           color: black;
         }
       }
       &__user {
         @include clearfix();
-        padding: 10px;
+        margin: 10px;
         height: 50px;
         display: block;
         color: black;
@@ -153,18 +155,35 @@
       }
       &__user-comment {
         display: block;
-        padding: 10px;
+        margin: 10px;
         height: 40px;
         font-size: 13px;
         color: black;
       }
       &__pickers {
         @include clearfix();
+        margin: 10px;
         &__individual-picker {
-          padding: 5px;
+          padding-right: 5px;
           float: left;
           width: 30px;
           height: 30px;
+        }
+      }
+      &__sub-info {
+        @include clearfix();
+        padding: 8px 20px;
+        border-top: 1px solid #EAEAEA;
+        &__publisher {
+          float: left;
+          font-size: 10px;
+          color: #999;
+        }
+        &__time {
+          float: left;
+          margin-left: 8px;
+          font-size: 10px;
+          color: #999;
         }
       }
     }

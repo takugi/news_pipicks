@@ -3,11 +3,11 @@
     .container__user-area__user
       .container__user-area__user__thumbnail
         = link_to user_path(current_user) do
-          = image_tag current_user.avatar, class: "container__user-area__user__thumbnail__avatar"
+          = image_tag current_user.avatar.presence || "default_avatar.jpeg", class: "container__user-area__user__thumbnail__avatar"
       .container__user-area__user__name
         %h2
           = link_to user_path(current_user), class: "container__user-area__user__name__font" do
-            = current_user.full_name
+            = current_user.full_name.presence || "名前を登録下さい"
     .container__user-area__follow-info
       = link_to following_user_path(current_user), class: "container__user-area__follow-info__following" do
         .container__user-area__follow-info__following__count
@@ -24,11 +24,11 @@
     .container__user-area__user
       .container__user-area__user__thumbnail
         = link_to new_user_registration_path do
-          = image_tag "child.jpeg", class: "container__user-area__user__thumbnail__avatar"
+          = image_tag "default_avatar.jpeg", class: "container__user-area__user__thumbnail__avatar"
       .container__user-area__user__name
         %h2
           = link_to new_user_registration_path, class: "container__user-area__user__name__font" do
-            = "No Account"
+            = "アカウント登録下さい"
     .container__user-area__follow-info
       = link_to new_user_registration_path, class: "container__user-area__follow-info__following" do
         .container__user-area__follow-info__following__count

@@ -3,25 +3,25 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @comment = Comment.new(create_params)
-    if @comment.save
-      redirect_to letter_path(@comment.letter)
+    if Comment.create(create_params)
+      flash[:notice] = "Pickしました。"
     else
-      redirect_to letter_path(@comment.letter)
+      flash[:alert] = "Pickできませんでした。"
     end
+    redirect_to :back
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    if @comment.destroy
-      redirect_to letter_path(@comment.letter)
+    if Comment.find(params[:id]).destroy
+      flash[:notice] = "Pickを削除しました。"
     else
-      redirect_to letter_path(@comment.letter)
+      flash[:alert] = "Pickを削除できませんでした。"
     end
+    redirect_to :back
   end
 
   private
-  def create_params
-    params.require(:comment).permit(:content).merge(user_id: current_user.id, letter_id: params[:letter_id])
-  end
+    def create_params
+      params.require(:comment).permit(:content).merge(user_id: current_user.id, letter_id: params[:letter_id])
+    end
 end
