@@ -4,6 +4,20 @@ class Letter < ActiveRecord::Base
 
   validates :url, format: URI::regexp(%w(http https))
 
+  def created_in_24hours?
+    now = Time.now
+    if (now - 24 * 60 * 60) <= self.created_at.time && self.created_at.time <= now
+      true
+    else
+      nil
+    end
+  end
+
+  def created_time
+    d = self.created_at
+    "#{d.year}年#{d.month}月#{d.day}日"
+  end
+
   def best_five_comments
     comments.first(5)
   end
