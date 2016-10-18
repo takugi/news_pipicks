@@ -16,7 +16,7 @@
       .container__contents-area__meta__site-name
         = @letter.site_name.presence || "No site name"
       .container__contents-area__meta__time-ago
-        = time_ago_in_words @letter.created_at
+        = "#{time_ago_in_words(@letter.created_at)}前"
     .container__contents-area__read-more
       = link_to "続きを読む", @letter.url, class: "container__contents-area__read-more__btn"
 
