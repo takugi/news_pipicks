@@ -1,4 +1,9 @@
-.container {
+.user-container {
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  min-height: 630px;
+  background-color: #EFEFEF;
   &__user-box {
     background-color: #FFF;
     border-bottom: 1px solid #EAEAEA;
@@ -18,6 +23,7 @@
       }
       &__left-info {
         float: left;
+        width: 650px;
         &__name {
           padding: 5px 0 20px;
           font-size: 20px;
@@ -30,6 +36,7 @@
         }
         &__profile {
           font-size: 14px;
+          line-height: 18px;
         }
       }
     }
@@ -109,6 +116,106 @@
           &:hover {
             opacity: 0.5;
           }
+        }
+      }
+    }
+  }
+  &__letter-container {
+    @include clearfix();
+    margin: 0 auto;
+    width: 796px;
+    &__individual-letter {
+      margin: 7px;
+      float: left;
+      width: 250px;
+      background-color: #FFF;
+      &__thumbnail {
+        height: 130px;
+        &__image {
+          width: 100%;
+          height: 100%;
+        }
+        &__picks-box {
+          position: relative;
+          bottom: 125px;
+          left: 179px;
+          text-align: center;
+          padding: 7px 0;
+          width: 70px;
+          background-color: rgba(45, 45, 45, 0.5);
+          border: 1px solid #FFFFFF;
+          &__cover {
+            display: inline;
+            &__size {
+              display: inline;
+              font-size: 14px;
+              font-family: Helvetica;
+              color: #FFFFFF;
+            }
+            &__picks {
+              display: inline;
+              line-height: 14px;
+              font-size: 10px;
+              font-family: Helvetica;
+              color: #FFFFFF;
+            }
+          }
+        }
+      }
+      &__title {
+        padding: 10px;
+        height: 50px;
+        &__font {
+          line-height: 25px;
+          color: black;
+        }
+      }
+      &__user {
+        @include clearfix();
+        padding: 10px;
+        height: 50px;
+        display: block;
+        color: black;
+        &__thumbnail {
+          float: left;
+          width: 50px;
+          height: 50px;
+          &__image {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        &__info {
+          float: left;
+          &__name {
+            margin-left: 5px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 15px;
+          }
+          &__profile {
+            margin-left: 5px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            color: #999;
+          }
+        }
+      }
+      &__user-comment {
+        display: block;
+        padding: 10px;
+        height: 40px;
+        font-size: 13px;
+        color: black;
+      }
+      &__pickers {
+        @include clearfix();
+        &__individual-picker {
+          padding: 5px;
+          float: left;
+          width: 30px;
+          height: 30px;
         }
       }
     }

@@ -75,8 +75,7 @@
   &__letter-container {
     @include clearfix();
     padding-left: 200px;
-    min-width: 600px;
-    width: 90%;
+    width: 1100px;
     &__individual-letter {
       margin: 10px;
       float: left;
@@ -89,26 +88,29 @@
           height: 100%;
         }
         &__picks-box {
-          @include clearfix();
           position: relative;
           bottom: 125px;
-          left: 184px;
-          display: inline-block;
-          padding: 7px 13px;
+          left: 179px;
+          text-align: center;
+          padding: 7px 0;
+          width: 70px;
           background-color: rgba(45, 45, 45, 0.5);
           border: 1px solid #FFFFFF;
-          &__size {
-            float: left;
-            font-size: 14px;
-            font-weight: bold;
-            color: #FFFFFF;
-          }
-          &__picks {
-            float: left;
-            line-height: 14px;
-            font-size: 10px;
-            font-weight: bold;
-            color: #FFFFFF;
+          &__cover {
+            display: inline;
+            &__size {
+              display: inline;
+              font-size: 14px;
+              font-family: Helvetica;
+              color: #FFFFFF;
+            }
+            &__picks {
+              display: inline;
+              line-height: 14px;
+              font-size: 10px;
+              font-family: Helvetica;
+              color: #FFFFFF;
+            }
           }
         }
       }
@@ -116,6 +118,7 @@
         padding: 10px;
         height: 50px;
         &__font {
+          line-height: 25px;
           color: black;
         }
       }

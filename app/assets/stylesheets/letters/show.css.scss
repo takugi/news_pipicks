@@ -8,28 +8,29 @@
       &__thumbnail {
         width: 100%;
         height: 100%;
-        &__picks-box {
-          @include clearfix();
-          position: relative;
-          bottom: 230px;
-          left: 479px;
-          display: inline-block;
-          padding: 7px 0;
-          width: 70px;
-          background-color: rgba(45, 45, 45, 0.5);
-          border: 1px solid #FFFFFF;
-          &__picks {
-            float: right;
-            margin: 0 3px;
-            line-height: 18px;
-            font-size: 10px;
-            font-weight: bold;
+      }
+      &__picks-box {
+        position: relative;
+        bottom: 230px;
+        left: 469px;
+        padding: 7px 0;
+        text-align: center;
+        width: 80px;
+        background-color: rgba(45, 45, 45, 0.5);
+        border: 1px solid #FFFFFF;
+        &__cover {
+          display: inline;
+          &__size {
+            display: inline;
+            font-size: 18px;
+            font-family: Helvetica;
             color: #FFFFFF;
           }
-          &__size {
-            float: right;
-            font-size: 18px;
-            font-weight: bold;
+          &__picks {
+            display: inline;
+            line-height: 18px;
+            font-family: Helvetica;
+            font-size: 7px;
             color: #FFFFFF;
           }
         }
