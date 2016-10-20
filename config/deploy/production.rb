@@ -1,6 +1,6 @@
 server '52.193.198.83', user: 'takugi', roles: %w{app db web}
 
-set :ssh_options, keys: '~/.ssh/first_aws_rsa'
+set :ssh_options, keys: '~/.ssh/takugi_0519_key_rsa'
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
