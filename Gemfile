@@ -15,6 +15,14 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'byebug'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
 
 group :test do
