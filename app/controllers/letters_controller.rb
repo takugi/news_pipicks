@@ -3,7 +3,7 @@ class LettersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    # @letters = Letter.order("created_at desc")
+    @letters = Letter.order("created_at desc")
   end
 
   def new
