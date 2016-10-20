@@ -3,7 +3,7 @@ lock '3.6.1'
 
 set :application, 'news_pipicks'
 
-set :repo_url, 'git@github.com:https://github.com/takugi/news_pipicks.git'
+set :repo_url, 'git@github.com:takugi/news_pipicks.git'
 
 set :branch, 'master'
 
