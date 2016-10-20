@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: news_pipicks_production
-  username: news_pipicks
-  password: <%= ENV['NEWS_PIPICKS_DATABASE_PASSWORD'] %>
+  username: root
+  password:
   socket: /var/lib/mysql/mysql.sock
