@@ -33,7 +33,7 @@
     .container__letter-container__individual-letter__sub-info
       .container__letter-container__individual-letter__sub-info__publisher
         - if letter.site_name.present?
-          = letter.site_name.truncate(15)
+          = letter.site_name.truncate(12)
         - else
           = "No site name"
       .container__letter-container__individual-letter__sub-info__time
