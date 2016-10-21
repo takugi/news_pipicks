@@ -4,6 +4,7 @@ class LettersController < ApplicationController
 
   def index
     @letters = Letter.order("created_at desc")
+    @better_letters = Letter.with_better_letters
   end
 
   def new
