@@ -172,10 +172,11 @@
       }
       &__sub-info {
         @include clearfix();
-        padding: 8px 20px;
+        padding: 8px 0;
         border-top: 1px solid #EAEAEA;
         &__publisher {
           float: left;
+          margin-left: 8px;
           font-size: 10px;
           color: #999;
         }
