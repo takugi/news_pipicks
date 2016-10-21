@@ -6,6 +6,9 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false
     = javascript_include_tag 'application', 'data-turbolinks-track' => false
     = csrf_meta_tags
+    = javascript_include_tag  "//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+    = javascript_include_tag  "jquery.bxslider.min.js"
+    = stylesheet_link_tag     "jquery.bxslider.css", rel: "stylesheet"
   %body
     = render partial: 'layouts/header'
     - if flash[:notice].present?
