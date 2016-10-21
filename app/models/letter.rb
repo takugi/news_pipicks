@@ -4,6 +4,8 @@ class Letter < ActiveRecord::Base
 
   validates :url, format: URI::regexp(%w(http https))
 
+  scope :with_better_letters, ->{ where(created_at: [1.days.ago..Time.now]).order("comments_count desc").first(5) }
+
   def created_in_24hours?
     now = Time.now
     if (now - 24 * 60 * 60) <= self.created_at.time && self.created_at.time <= now
