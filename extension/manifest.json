@@ -1,9 +1,9 @@
 {
-  "name": "My third extension",
+  "name": "url取得",
   "version": "0.1",
   "manifest_version": 2,
 
-  "description": "今いるページの背景色を変える",
+  "description": "urlを取得する",
 
   "permissions": [
     "tabs", "http://*/*"
