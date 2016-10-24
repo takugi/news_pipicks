@@ -32,11 +32,17 @@
       .container__topics__flame__sub-flame
         .container__topics__flame__sub-flame__first
           = link_to letter_path(@better_letters[0]) do
-            = image_tag @better_letters[0].image, class: "container__topics__flame__sub-flame__first__image"
+            = image_tag @better_letters[0].image.presence || "default_letter_image.jpg", class: "container__topics__flame__sub-flame__first__image"
             .container__topics__flame__sub-flame__first__title
-              = @better_letters[0].title.truncate(40).presence || "No title"
+              - if @better_letters[0].title.present?
+                = @better_letters[0].title.truncate(40)
+              - else
+                = "No title"
         .container__topics__flame__sub-flame__second
           = link_to letter_path(@better_letters[1]) do
-            = image_tag @better_letters[1].image, class: "container__topics__flame__sub-flame__second__image"
+            = image_tag @better_letters[1].image.presence || "default_letter_image.jpg", class: "container__topics__flame__sub-flame__second__image"
             .container__topics__flame__sub-flame__second__title
-              = @better_letters[1].title.truncate(40).presence || "No title"
+              - if @better_letters[1].title.present?
+                = @better_letters[1].title.truncate(40)
+              - else
+                = "No title"
