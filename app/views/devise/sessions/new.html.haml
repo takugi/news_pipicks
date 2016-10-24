@@ -5,6 +5,13 @@
     .container__regist-form__login-message
       アカウントをお持ちでない方は
       = link_to "こちら", new_user_registration_path, class: "container__regist-form__login-message__link"
+    .container__regist-form__login
+      = link_to user_facebook_omniauth_authorize_path, class: "container__regist-form__login__fb" do
+        = image_tag "facebook.png", class: "container__regist-form__login__fb__logo"
+        .container__regist-form__login__fb__facebook Facebook
+      = link_to user_twitter_omniauth_authorize_path, class: "container__regist-form__login__tw" do
+        = image_tag "twitter.png", class: "container__regist-form__login__tw__logo"
+        .container__regist-form__login__tw__twitter Twitter
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .container__regist-form__form-group
         = f.email_field :email, autofocus: true, placeholder: "登録したメールアドレス", class: "container__regist-form__form-group__field"
