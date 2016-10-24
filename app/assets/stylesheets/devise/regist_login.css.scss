@@ -17,6 +17,98 @@
         color: #37509C;
       }
     }
+    &__login {
+      @include clearfix();
+      width: 320px;
+      margin: 0 auto;
+      &__fb {
+        @include clearfix();
+        float: left;
+        display: block;
+        padding: 15px 36px 16px 12px;
+        background-color: #3C5B97;
+        border-radius: 2px;
+        &__logo {
+          float: left;
+          width: 16px;
+          height: 16px;
+        }
+        &__facebook {
+          float: left;
+          display: inline;
+          padding-top: 3px;
+          margin-left: 13px;
+          font-size: 14px;
+          color: #FFF;
+        }
+      }
+      &__tw {
+        @include clearfix();
+        float: right;
+        display: block;
+        padding: 8px 36px 8px 12px;
+        background-color: rgba(0, 172, 237, 1);
+        border-radius: 2px;
+        &__logo {
+          float: left;
+          width: 32px;
+          height: 32px;
+        }
+        &__twitter {
+          float: left;
+          display: inline;
+          padding-top: 9px;
+          margin-left: 13px;
+          font-size: 14px;
+          color: #FFF;
+        }
+      }
+    }
+    &__sign-up {
+      width: 320px;
+      margin: 0 auto;
+      &__fb {
+        @include clearfix();
+        display: block;
+        padding: 15px 36px 16px 26px;
+        background-color: #3C5B97;
+        border-radius: 2px;
+        &__logo {
+          float: left;
+          width: 16px;
+          height: 16px;
+        }
+        &__facebook {
+          float: left;
+          display: inline;
+          padding-top: 3px;
+          margin-left: 22px;
+          font-size: 14px;
+          color: #FFF;
+        }
+      }
+      &__tw {
+        @include clearfix();
+        margin-top: 10px;
+        display: block;
+        padding: 8px 36px 8px 20px;
+        background-color: rgba(0, 172, 237, 1);
+        border-radius: 2px;
+        &__logo {
+          float: left;
+          width: 32px;
+          height: 32px;
+        }
+        &__twitter {
+          float: left;
+          display: inline;
+          padding-top: 9px;
+          margin-left: 13px;
+          font-size: 14px;
+          color: #FFF;
+        }
+      }
+    }
     &__form-group {
       margin: 20px 0;
       text-align: center;
