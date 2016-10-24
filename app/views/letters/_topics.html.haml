@@ -14,7 +14,10 @@
                     .container__topics__flame__main-flame__link__picks-box__cover__picks
                       Picks
                 .container__topics__flame__main-flame__link__title
-                  = letter.title.truncate(40).presence || "No title"
+                  - if letter.title.present?
+                    = letter.title.truncate(40)
+                  - else
+                    = "No title"
                 .container__topics__flame__main-flame__link__sub-info
                   .container__topics__flame__main-flame__link__sub-info__publisher
                     - if letter.site_name.present?
