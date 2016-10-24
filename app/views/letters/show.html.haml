@@ -11,10 +11,16 @@
             .container__contents-area__letter-image__picks-box__cover__picks
               Picks
     .container__contents-area__letter-title
-      = link_to @letter.title.truncate(40).presence || "No title", @letter.url, class: "container__contents-area__letter-title__font"
+      - if @letter.title.present?
+        = link_to @letter.title.truncate(40).presence, @letter.url, class: "container__contents-area__letter-title__font"
+      - else
+        = link_to "No title", @letter.url, class: "container__contents-area__letter-title__font"
     .container__contents-area__meta
       .container__contents-area__meta__site-name
-        = @letter.site_name.presence || "No site name"
+        - if @letter.site_name.present?
+          = @letter.site_name.truncate(12)
+        - else
+          = "No site name"
       .container__contents-area__meta__time-ago
         = "#{time_ago_in_words(@letter.created_at)}前"
     .container__contents-area__read-more
