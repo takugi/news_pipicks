@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   def user_letters
     letters = []
@@ -46,4 +46,14 @@ class User < ActiveRecord::Base
     "#{last_name} #{first_name}"
   end
 
+  def self.select_or_create_omniauth(auth)
+    find_by(auth.slice(:provider, :uid)) || self.create(
+      provider: auth.provider,
+      uid: auth.uid,
+      email: auth.info.email,
+      first_name: auth.info.name.split[0],
+      last_name: auth.info.name.split[1],
+      password: Devise.friendly_token[0,20]
+    )
+  end
 end
