@@ -25,7 +25,7 @@ ja:
       unlock_instructions:
         subject: "アカウントのロック解除"
     omniauth_callbacks:
-      failure: "%{kind} から承認されませんでした。理由：%{reason}"
+      failure: "%{kind} から承認されませんでした。"
       success: "%{kind} から承認されました。"
     passwords:
       no_token: "パスワードリセットのメール以外からは、このページにアクセスする事ができません。もしパスワードリセットのメールから来ている場合は、正しいURLでアクセスしていることを確認して下さい。"
