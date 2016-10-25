@@ -25,8 +25,9 @@
     %p
       = letter.user_comment(@user).content.truncate(50).presence || "No comment"
   .user-container__letter-container__individual-letter__pickers
-    - letter.comments.first(5).each do |comment|
-      = image_tag comment.user.avatar.presence || "default_avatar.jpeg", class: "user-container__letter-container__individual-letter__pickers__individual-picker"
+    - letter.best_five_comments.each do |comment|
+      = link_to user_path(comment.user) do
+        = image_tag comment.user.avatar.presence || "default_avatar.jpeg", class: "user-container__letter-container__individual-letter__pickers__individual-picker"
   .user-container__letter-container__individual-letter__sub-info
     .user-container__letter-container__individual-letter__sub-info__publisher
       - if letter.site_name.present?

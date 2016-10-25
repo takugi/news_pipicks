@@ -4,7 +4,10 @@
       = image_tag @user.avatar.presence || "default_avatar.jpeg", class: "user-container__user-box__user__right-info__avatar"
     .user-container__user-box__user__left-info
       .user-container__user-box__user__left-info__name
-        = @user.full_name.presence || "No name"
+        - if @user.full_name.present?
+          = @user.full_name.truncate(35)
+        - else
+          No name
       .user-container__user-box__user__left-info__like-count
         %p 総 Like 数: #{@user.sum_like}
       .user-container__user-box__user__left-info__profile
