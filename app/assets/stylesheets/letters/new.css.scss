@@ -1,8 +1,28 @@
-.container {
+.modal {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  background-color: rgba(21,39,77,0.9);
+  &__back {
+    z-index: 10001;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
   &__pick-form {
-    margin: 100px auto 0;
+    z-index: 10002;
+    position: fixed;
+    top: 5%;
+    left: 25%;
     width: 600px;
     background-color: #FFF;
+    margin: 100px auto 0;
     border: solid 1px #15274D;
     border-radius: 5px;
     &__message {
