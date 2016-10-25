@@ -5,9 +5,12 @@
         .user-container__tab-contents__items__user-info__upper-block
           = link_to user_path(follow) do
             = image_tag follow.avatar.presence || "default_avatar.jpeg", class: "user-container__tab-contents__items__user-info__upper-block__avatar"
-          = link_to follow.full_name.presence || "No name", user_path(follow), class: "user-container__tab-contents__items__user-info__upper-block__name"
+          - if follow.full_name.present?
+            = link_to follow.full_name.truncate(14), user_path(follow), class: "user-container__tab-contents__items__user-info__upper-block__name"
+          - else
+            = link_to "No name", user_path(follow), class: "user-container__tab-contents__items__user-info__upper-block__name"
         .user-container__tab-contents__items__user-info__lower-block
-          =link_to following_user_path(follow.following[0]), class: "user-container__tab-contents__items__user-info__lower-block__following" do
+          =link_to following_user_path(follow), class: "user-container__tab-contents__items__user-info__lower-block__following" do
             .user-container__tab-contents__items__user-info__lower-block__following__caption
               %span フォロー
             .user-container__tab-contents__items__user-info__lower-block__following__count
@@ -18,7 +21,10 @@
             .user-container__tab-contents__items__user-info__lower-block__follower__count
               = follow.passive_relationships.count
           .user-container__tab-contents__items__user-info__lower-block__follow
-            - if @user.followers.include?(current_user)
-              = link_to "フォロー中", relationship_path(follow.active_relationships.find_by(following_id: follow.id)), method: :delete, class: "user-container__tab-contents__items__user-info__lower-block__follow__btn-blue"
+            - if current_user.following.include?(follow)
+              = form_for current_user.with_following(follow), method: :delete do |f|
+                = f.submit "フォロー中", class: "user-container__tab-contents__items__user-info__lower-block__follow__btn-blue"
             - else
-              = link_to "フォロー", relationships_path(current_user.active_relationships), method: :create, class: "user-container__tab-contents__items__user-info__lower-block__follow__btn"
+              = form_tag '/relationships', method: :post do
+                = hidden_field_tag :following_id, follow.id
+                = submit_tag "フォロー", class: "user-container__tab-contents__items__user-info__lower-block__follow__btn"
