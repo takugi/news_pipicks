@@ -1,8 +1,0 @@
-.container
-  .container__pick-form
-    .container__pick-form__message
-      %p URLを入力して
-      %p おすすめの記事を投稿しましょう
-    = form_tag('/letters') do |f|
-      .container__pick-form__url-group
-        = text_field_tag :url, "", placeholder: "URLを入力", class: "container__pick-form__url-group__url-value", autofocus: true
