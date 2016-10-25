@@ -24,4 +24,5 @@
       = link_to "設定", edit_user_path(current_user), class: "user-menu__user-edit__font"
     .user-menu__logout
       = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "user-menu__logout__font"
+  = render partial: "letters/new_modal"
 
