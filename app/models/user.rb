@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   has_many :comments, ->{ order("updated_at desc") }, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :following, through: :active_relationships, source: :following
+  has_many :following, ->{ order("updated_at desc") }, through: :active_relationships, source: :following
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :followers, ->{ order("updated_at desc") }, through: :passive_relationships, source: :follower
 
   mount_uploader :avatar, AvatarUploader
 
@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
 
   def unfollow(other_user)
     active_relationships.find_by(following_id: other_user.id).destroy
+  end
+
+  def with_following(other_user)
+    active_relationships.find_by(following_id: other_user.id)
   end
 
   def following?(other_user)
