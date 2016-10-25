@@ -31,7 +31,8 @@
         .user-container__navbar__box__follower-box__caption
           %p フォロワー
     .user-container__navbar__box__follow-box
-      - if current_user.following.include?(@user)
+      - if @user == current_user
+      - elsif current_user.following.include?(@user)
         = form_for current_user.with_following(@user), method: :delete do |f|
           = f.submit "フォロー中", class: "user-container__navbar__box__follow-box__btn-blue"
       - else

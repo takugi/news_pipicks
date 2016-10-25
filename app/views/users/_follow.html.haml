@@ -21,7 +21,8 @@
             .user-container__tab-contents__items__user-info__lower-block__follower__count
               = follow.passive_relationships.count
           .user-container__tab-contents__items__user-info__lower-block__follow
-            - if current_user.following.include?(follow)
+            - if follow == current_user
+            - elsif current_user.following.include?(follow)
               = form_for current_user.with_following(follow), method: :delete do |f|
                 = f.submit "フォロー中", class: "user-container__tab-contents__items__user-info__lower-block__follow__btn-blue"
             - else
