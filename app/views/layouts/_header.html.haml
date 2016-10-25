@@ -7,8 +7,7 @@
       .header__nav__user#user-header-image
         = link_to "", remote: true do
           = image_tag current_user.avatar.presence || "default_avatar.jpeg", class: "header__nav__user__avatar"
-      .header__nav__new-letter
-        = link_to "投稿", new_letter_path, class: "header__nav__new-letter__font"
+      .header__nav__new-letter#letter-new 投稿
     - else
       .header__nav__regist
         = link_to "無料登録", new_user_registration_path, class: "header__nav__regist__font"
