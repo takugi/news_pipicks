@@ -5,5 +5,5 @@
         .category-container__category-individual__title-block
           .category-container__category-individual__title-block__title
             = key
-          = link_to "#{key}\t一覧を見る", "", class: "category-container__category-individual__title-block__to-list"
+          = link_to "#{key}\t一覧を見る", category_path(key), class: "category-container__category-individual__title-block__to-list"
         = render partial: "letters/letter", collection: categories
