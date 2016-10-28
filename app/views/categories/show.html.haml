@@ -1,0 +1,8 @@
+.container
+  = render partial: "layouts/sidebar"
+  .container__title-box
+    .container__title-box__title
+      = params[:id]
+  .container__letter-container
+    .container__letter-container__letter-block
+      = render partial: "letters/letter", collection: @classified_letters

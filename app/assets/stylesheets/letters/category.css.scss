@@ -1,0 +1,25 @@
+.category-container {
+  &__category-individual {
+    clear: both;
+    padding-top: 56px;
+    &__title-block {
+      @include clearfix();
+      margin: 0 7px 24px 7px;
+      &__title {
+        float: left;
+        font-weight: 700;
+        font-size: 18px;
+        color: #15274D;
+      }
+      &__to-list {
+        display: block;
+        float: right;
+        font-size: 14px;
+        color: #37509C;
+      }
+    }
+    &__news {
+
+    }
+  }
+}

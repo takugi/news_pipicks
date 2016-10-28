@@ -1,0 +1,12 @@
+.container {
+  &__title-box {
+    margin-left: 200px;
+    background-color: #FFF;
+    &__title {
+      padding: 16px 0 14px 16px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #15274D;
+    }
+  }
+}

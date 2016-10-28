@@ -9,10 +9,13 @@
 
 @import "./flash/flash";
 
+@import "./categories/show";
+
 @import "./letters/index";
 @import "./letters/new";
 @import "./letters/show";
 @import "./letters/topics";
+@import "./letters/category";
 
 @import "./users/show";
 @import "./users/edit";

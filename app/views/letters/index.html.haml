@@ -2,4 +2,6 @@
   = render partial: "layouts/sidebar"
   = render partial: "letters/topics"
   .container__letter-container
-    = render @letters
+    .container__letter-container__letter-block
+      = render @letters
+      = render partial: "letters/category"
