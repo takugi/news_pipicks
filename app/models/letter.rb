@@ -5,6 +5,17 @@ class Letter < ActiveRecord::Base
   validates :url, format: URI::regexp(%w(http https))
 
   scope :with_better_letters, ->{ where(created_at: [1.days.ago..Time.now], comments_count: 1..Float::INFINITY).order("comments_count desc").first(5) }
+  scope :classify_letters, ->(category){ where(category: category).order("created_at desc") }
+
+  def self.select_categories
+    categories = Hash.new
+    keys = ["テクノロジー", "ビジネス", "政治・経済", "金融・マーケット", "キャリア・教育", "スポーツ", "イノベーション"]
+
+    keys.each do |key|
+      categories["#{key}"] = self.where(created_at: [7.day.ago..Time.now], comments_count: 1..Float::INFINITY, category: key, confidence: 0.7..Float::INFINITY).order("comments_count desc").first(3)
+    end
+    categories
+  end
 
   def created_in_24hours?
     now = Time.now
@@ -56,7 +67,27 @@ class Letter < ActiveRecord::Base
         letter[:description] = ele.get_attribute(:content)
       end
     end
+    if letter[:description].present?
+      description = letter[:description]
+      letter[:category], letter[:confidence] = watson_api(description)
+    end
+    self.update(title: letter[:title], image: letter[:image], site_name: letter[:site_name], description: letter[:description], category: letter[:category], confidence: letter[:confidence])
+  end
 
-    self.update(title: letter[:title], image: letter[:image], site_name: letter[:site_name], description: letter[:description])
+  private
+  def watson_api(text)
+    uri = URI.parse("https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/#{ENV['NLC_CLASSIFIER_ID']}/classify")
+    params = { text: text }
+    uri.query = URI.encode_www_form(params)
+
+    request = Net::HTTP::Get.new(uri)
+    request.basic_auth( ENV['NLC_USERNAME'], ENV['NLC_PASSWORD'])
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https"){|http|
+      http.request(request);
+    }
+
+    obj = JSON.parse(response.body)
+    return obj["top_class"], (obj["classes"][0]["confidence"])
   end
 end
