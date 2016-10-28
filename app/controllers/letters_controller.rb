@@ -1,16 +1,18 @@
 class LettersController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_letters, only: [:index, :create]
 
   def index
+    @letters = Letter.order("created_at desc").first(9)
     @better_letters = Letter.with_better_letters
+    @categories = Letter.select_categories
   end
 
   def new
   end
 
   def create
+    @letters = Letter.order("created_at desc")
     unless @letters.pluck(:url).include?(url_params[:url])
       letter = Letter.new(url_params)
       if letter.save
@@ -34,10 +36,6 @@ class LettersController < ApplicationController
   end
 
   private
-    def set_letters
-      @letters = Letter.order("created_at desc")
-    end
-
     def url_params
       params.permit(:url)
     end
