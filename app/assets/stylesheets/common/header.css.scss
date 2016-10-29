@@ -80,10 +80,17 @@
       font-size: 14px;
     }
   }
+  &__user-storage {
+    padding: 15px;
+    border-top: 1px solid #D9D9D9;
+    &__font {
+      color: black;
+      font-size: 14px;
+    }
+  }
   &__user-edit {
     padding: 15px;
     border-top: 1px solid #D9D9D9;
-    border-bottom: 1px solid #D9D9D9;
     &__font {
       color: black;
       font-size: 14px;
@@ -91,6 +98,7 @@
   }
   &__logout {
     padding: 15px;
+    border-top: 1px solid #D9D9D9;
     &__font {
       color: black;
       font-size: 14px;
