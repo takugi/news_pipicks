@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :following, ->{ order("updated_at desc") }, through: :active_relationships, source: :following
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   has_many :followers, ->{ order("updated_at desc") }, through: :passive_relationships, source: :follower
+  has_many :storages, ->{ order("created_at desc")}
 
   mount_uploader :avatar, AvatarUploader
 
