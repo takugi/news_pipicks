@@ -71,23 +71,23 @@ class Letter < ActiveRecord::Base
       description = letter[:description]
       letter[:category], letter[:confidence] = watson_api(description)
     end
-    self.update(title: letter[:title], image: letter[:image], site_name: letter[:site_name], description: letter[:description], category: letter[:category], confidence: letter[:confidence])
+    self.update(letter)
   end
 
   private
-  def watson_api(text)
-    uri = URI.parse("https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/#{ENV['NLC_CLASSIFIER_ID']}/classify")
-    params = { text: text }
-    uri.query = URI.encode_www_form(params)
+    def watson_api(text)
+      uri = URI.parse("https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/#{ENV['NLC_CLASSIFIER_ID']}/classify")
+      params = { text: text }
+      uri.query = URI.encode_www_form(params)
 
-    request = Net::HTTP::Get.new(uri)
-    request.basic_auth( ENV['NLC_USERNAME'], ENV['NLC_PASSWORD'])
+      request = Net::HTTP::Get.new(uri)
+      request.basic_auth( ENV['NLC_USERNAME'], ENV['NLC_PASSWORD'])
 
-    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https"){|http|
-      http.request(request);
-    }
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https"){|http|
+        http.request(request);
+      }
 
-    obj = JSON.parse(response.body)
-    return obj["top_class"], (obj["classes"][0]["confidence"])
-  end
+      obj = JSON.parse(response.body)
+      return obj["top_class"], (obj["classes"][0]["confidence"])
+    end
 end
