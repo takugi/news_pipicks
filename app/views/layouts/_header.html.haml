@@ -5,8 +5,8 @@
   .header__nav
     - if user_signed_in?
       .header__nav__user#user-header-image
-        = link_to "", remote: true do
-          = image_tag current_user.avatar.presence || "default_avatar.jpeg", class: "header__nav__user__avatar"
+        = image_tag current_user.avatar.presence || "default_avatar.jpeg", class: "header__nav__user__avatar"
+      = image_tag "flag.png", class: "header__nav__user-storage", id: "user-storages"
       = image_tag "pen.png", class: "header__nav__new-letter", id: "letter-new"
     - else
       .header__nav__regist
@@ -14,15 +14,18 @@
       .header__nav__login
         = link_to "ログイン", new_user_session_path, class: "header__nav__login__font"
 - if user_signed_in?
-  #user-menu-container.user-menu
+  .user-menu#user-menu-container
     .user-menu__user-name
-      - if current_user.full_name.present?
-        = link_to current_user.full_name, user_path(current_user), class: "user-menu__user-name__font"
-      - else
-        = link_to "No name", user_path(current_user), class: "user-menu__user-name__font"
+      = link_to current_user.full_name.presence || "No name", user_path(current_user), class: "user-menu__user-name__font"
     .user-menu__user-edit
       = link_to "設定", edit_user_path(current_user), class: "user-menu__user-edit__font"
     .user-menu__logout
       = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "user-menu__logout__font"
-  = render partial: "letters/new_modal"
 
+  .storage-menu#storage-letters
+    - if current_user.storage_letters.present?
+      - current_user.storage_letters.each do |storage_letter|
+        .storage-menu__title
+          = link_to storage_letter.title.truncate(40).presence || "No name", letter_path(storage_letter), class: "storage-menu__title__font"
+
+  = render partial: "letters/new_modal"

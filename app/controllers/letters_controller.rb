@@ -17,7 +17,7 @@ class LettersController < ApplicationController
       letter = Letter.new(url_params)
       if letter.save
         letter.create_letter
-        flash[:notice] = "正常に投稿できました。"
+        flash[:notice] = ""
         redirect_to letter_path(letter)
       else
         flash[:alert] = "投稿に失敗しました。"
@@ -33,6 +33,8 @@ class LettersController < ApplicationController
     @letter = Letter.find(params[:id])
     @comments = @letter.comments
     @comment = Comment.new
+    @create_storage = Storage.new
+    @delete_storage = Storage.find_by(user_id: current_user.id, letter_id: @letter)
   end
 
   private

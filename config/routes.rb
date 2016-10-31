@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :categories, only: :show
   resources :users, only: [:show, :edit, :update] do
+    resources :storages, only: [:index, :create, :destroy]
     member do
       get :following, :followers
     end

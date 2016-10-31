@@ -8,4 +8,14 @@ $(function() {
       user_info.css("display", "none");
     }
   });
+
+  $("#user-storages").on("click", function() {
+    var letters = $("#storage-letters");
+    var display_info = letters.css("display");
+    if (display_info == "none") {
+      letters.css("display", "block");
+    } else {
+      letters.css("display", "none");
+    }
+  });
 });
