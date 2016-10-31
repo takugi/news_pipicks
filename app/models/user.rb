@@ -10,10 +10,28 @@ class User < ActiveRecord::Base
   has_many :followers, ->{ order("updated_at desc") }, through: :passive_relationships, source: :follower
   has_many :storages, ->{ order("created_at desc")}
 
+  STORAGE_MAX = 5
+
+  validate :storages_size_validate
+
+  def storages_size_validate
+    errors.add(:storages, "ニュース保管登録は5つまでです。") if self.items.size > STORAGE_MAX
+  end
+
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
+  def storage_letters
+    letters = []
+
+    self.storages.each do |storage|
+      letters.push(storage.letter)
+    end
+
+    letters.reject(&:blank?)
+  end
 
   def user_letters
     letters = []
