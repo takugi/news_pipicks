@@ -37,7 +37,7 @@
       }
     }
     &__letter-title {
-      padding: 20px;
+      padding: 20px 20px 0;
       &__font {
         color: black;
         font-size: 24px;
@@ -48,15 +48,47 @@
       @include clearfix();
       &__site-name {
         float: left;
-        padding: 0 0 20px 20px;
+        padding: 20px 0 20px 20px;
         font-size: 12px;
         color: #999;
       }
       &__time-ago {
         float: left;
-        padding: 0 0 20px 40px;
+        padding: 20px 0 20px 40px;
         font-size: 12px;
         color: #999;
+      }
+      &__storage {
+        float: right;
+        padding: 7px 20px 7px 0;
+        &__normal-btn {
+          padding: 7.5px 15px;
+          background-color: #FFF;
+          border-radius: 2px;
+          font-size: 14px;
+          color: #37509C;
+          border: 1px solid #37509C;
+          &:hover {
+            background-color: #15274D;
+            color: #FFF;
+            cursor: pointer;
+          }
+        }
+        &__red-btn {
+          display: block;
+          padding: 11px 22px;
+          background-color: #FFF;
+          border-radius: 2px;
+          font-weight: bold;
+          font-size: 14px;
+          color: #F76666;
+          border: 1px solid #F76666;
+          &:hover {
+            background-color: #F76666;
+            color: #FFF;
+            cursor: pointer;
+          }
+        }
       }
     }
     &__read-more {
@@ -69,6 +101,10 @@
         color: #37509C;
         border: 1px solid #37509C;
         border-radius: 2px;
+        &:hover {
+          background-color: #15274D;
+          color: #FFF;
+        }
       }
     }
   }
