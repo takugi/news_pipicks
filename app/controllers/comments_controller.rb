@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def create
     if Comment.create(create_params)
-      flash[:notice] = "Pickしました。"
+      flash[:notice] = ""
     else
       flash[:alert] = "Pickできませんでした。"
     end
