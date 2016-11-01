@@ -1,21 +1,32 @@
 $(function() {
-  $("#user-header-image").on("click", function() {
-    var user_info = $("#user-menu-container");
-    var display_info = user_info.css("display");
-    if (display_info == "none") {
-      user_info.css("display", "block");
-    } else {
-      user_info.css("display", "none");
-    }
+  var userMenuOpenTrigger = $("#user-header-image");
+  var userBack =$("#user-back")
+  var userCloseTrigger = $("#user-back-close");
+  var user_info = $("#user-menu-container");
+
+
+  userMenuOpenTrigger.on("click", function() {
+    userBack.css("visibility", "visible");
+    user_info.css("display", "block");
   });
 
-  $("#user-storages").on("click", function() {
-    var letters = $("#storage-letters");
-    var display_info = letters.css("display");
-    if (display_info == "none") {
-      letters.css("display", "block");
-    } else {
-      letters.css("display", "none");
-    }
+  userCloseTrigger.on("click", function() {
+    userBack.css("visibility", "hidden");
+    user_info.css("display", "none");
+  });
+
+  var storageMenuOpenTrigger = $("#user-storages");
+  var storageBack = $("#storage-back")
+  var storageCloseTrigger = $("#storage-back-close");
+  var letters = $("#storage-letters");
+
+  storageMenuOpenTrigger.on("click", function() {
+    storageBack.css("visibility", "visible");
+    letters.css("display", "block");
+  });
+
+  storageCloseTrigger.on("click", function() {
+    storageBack.css("visibility", "hidden");
+    letters.css("display", "none");
   });
 });
