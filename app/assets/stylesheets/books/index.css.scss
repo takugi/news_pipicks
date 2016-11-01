@@ -1,0 +1,51 @@
+.container {
+  &__book-container {
+    padding: 28px 28px 0;
+    &__cover {
+      margin: 0 auto;
+      width: 600px;
+      &__individual {
+        @include clearfix();
+        display: block;
+        margin-bottom: 10px;
+        background-color: #FFF;
+        &__image {
+          float: left;
+          display: block;
+          width: 160px;
+          height: 200px;
+        }
+        &__right-info {
+          float: left;
+          margin-left: 10px;
+          &__title {
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+          }
+          &__sub-info {
+            @include clearfix();
+            &__author {
+              float: left;
+              font-size: 14px;
+              color: #999;
+            }
+            &__manufacturer {
+              float: left;
+              margin-left: 10px;
+              font-size: 14px;
+              color: #999;
+            }
+          }
+          &__user-comment {
+            display: block;
+            margin-top: 15px;
+            font-size: 16px;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

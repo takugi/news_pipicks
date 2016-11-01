@@ -1,0 +1,41 @@
+.container
+  = render partial: "users/user_info", locals: { user: @user }
+  = render partial: "users/navbar", locals: { user: @user }
+  .container__book-container
+    .container__book-container__cover
+      = link_to "", class: "container__book-container__cover__individual" do
+        = image_tag "default_letter_image.jpeg", class: "container__book-container__cover__individual__image"
+        .container__book-container__cover__individual__right-info
+          .container__book-container__cover__individual__right-info__title
+            = "経済の本"
+          .container__book-container__cover__individual__right-info__sub-info
+            .container__book-container__cover__individual__right-info__sub-info__author
+              = "池上彰"
+            .container__book-container__cover__individual__right-info__sub-info__manufacturer
+              = "講談社"
+          .container__book-container__cover__individual__right-info__user-comment
+            = "いいね"
+      = link_to "", class: "container__book-container__cover__individual" do
+        = image_tag "default_letter_image.jpeg", class: "container__book-container__cover__individual__image"
+        .container__book-container__cover__individual__right-info
+          .container__book-container__cover__individual__right-info__title
+            = "経済の本"
+          .container__book-container__cover__individual__right-info__sub-info
+            .container__book-container__cover__individual__right-info__sub-info__author
+              = "池上彰"
+            .container__book-container__cover__individual__right-info__sub-info__manufacturer
+              = "講談社"
+          .container__book-container__cover__individual__right-info__user-comment
+            = "いいね"
+      = link_to "", class: "container__book-container__cover__individual" do
+        = image_tag "default_letter_image.jpeg", class: "container__book-container__cover__individual__image"
+        .container__book-container__cover__individual__right-info
+          .container__book-container__cover__individual__right-info__title
+            = "経済の本"
+          .container__book-container__cover__individual__right-info__sub-info
+            .container__book-container__cover__individual__right-info__sub-info__author
+              = "池上彰"
+            .container__book-container__cover__individual__right-info__sub-info__manufacturer
+              = "講談社"
+          .container__book-container__cover__individual__right-info__user-comment
+            = "いいね"
