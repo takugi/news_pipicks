@@ -1,7 +1,7 @@
 $(function() {
   $(document).ready(function() {
     $("#logo").fadeIn(0.1, function() {
-      $("#logo").animate({width: "40%", height: "50%", top: "25%", left: "30%", opacity: "0"}, 700, function() {
+      $("#logo").animate({width: "48%", height: "60%", top: "20%", left: "34%", opacity: "0"}, 800, function() {
         $("#logo").fadeOut(0.1);
       });
     });
