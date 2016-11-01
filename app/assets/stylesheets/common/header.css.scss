@@ -150,16 +150,34 @@
       top: 52px;
       right: 90px;
       z-index: 100;
-      min-width: 120px;
+      min-width: 600px;
       background-color: #FFF;
       border-radius: 3px;
       box-shadow: 0 0 4px #CCC;
-      &__title {
-        padding: 15px;
+      &__link {
+        @include clearfix();
+        display: block;
         border-top: 1px solid #D9D9D9;
-        &__font {
-          color: black;
-          font-size: 14px;
+        &__image {
+          display: block;
+          margin: 10px 0 0 10px;
+          float: left;
+          width: 40px;
+          height: 40px;
+        }
+        &__right-block {
+          float: left;
+          padding: 10px 15px;
+          &__title {
+            color: black;
+            font-size: 12px;
+            font-weight: bold;
+          }
+          &__time {
+            margin-top: 15px;
+            color: #999;
+            font-size: 12px;
+          }
         }
       }
     }

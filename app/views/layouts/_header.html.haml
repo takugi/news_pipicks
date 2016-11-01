@@ -28,8 +28,13 @@
     .storage__back#storage-back-close
       .storage__back__storage-menu#storage-letters
         - if current_user.storage_letters.present?
-          - current_user.storage_letters.each do |storage_letter|
-            .storage__back__storage-menu__title
-              = link_to storage_letter.title.truncate(40).presence || "No name", letter_path(storage_letter), class: "storage__back__storage-menu__title__font"
+          - current_user.storages.each do |storage|
+            = link_to letter_path(storage.letter), class: "storage__back__storage-menu__link" do
+              = image_tag storage.letter.image, class: "storage__back__storage-menu__link__image"
+              .storage__back__storage-menu__link__right-block
+                .storage__back__storage-menu__link__right-block__title
+                  = storage.letter.title.truncate(40).presence || "No name"
+                .storage__back__storage-menu__link__right-block__time
+                  = "#{time_ago_in_words(storage.created_at)}前"
 
   = render partial: "letters/new_modal"
