@@ -24,7 +24,7 @@
     font-size: 12px;
     &__user {
       position: relative;
-      right: 130px;
+      right: 160px;
       top: 12px;
       height: 40px;
       width: 40px;
@@ -36,6 +36,17 @@
           opacity: 0.8;
           cursor: pointer;
         }
+      }
+    }
+    &__user-index {
+      position: relative;
+      bottom: 28px;
+      right: 100px;
+      width: 24px;
+      height: 24px;
+      &:hover {
+        opacity: 0.8;
+        cursor: pointer;
       }
     }
     &__user-storage {
@@ -97,7 +108,7 @@
     &__user-menu {
       position: fixed;
       top: 52px;
-      right: 155px;
+      right: 210px;
       z-index: 10002;
       min-width: 120px;
       background-color: #FFF;
@@ -105,6 +116,9 @@
       box-shadow: 0 0 4px #CCC;
       &__user-name {
         padding: 15px;
+        &:hover {
+          background-color: #EFEFEF;
+        }
         &__font {
           color: black;
           font-size: 14px;
@@ -113,6 +127,9 @@
       &__user-edit {
         padding: 15px;
         border-top: 1px solid #D9D9D9;
+        &:hover {
+          background-color: #EFEFEF;
+        }
         &__font {
           color: black;
           font-size: 14px;
@@ -121,9 +138,70 @@
       &__logout {
         padding: 15px;
         border-top: 1px solid #D9D9D9;
+        &:hover {
+          background-color: #EFEFEF;
+        }
         &__font {
           color: black;
           font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.book {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  &__back {
+    z-index: 10001;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    &__book-menu {
+      position: fixed;
+      top: 52px;
+      right: 155px;
+      z-index: 10002;
+      min-width: 120px;
+      background-color: #FFF;
+      border-radius: 3px;
+      box-shadow: 0 0 4px #CCC;
+      &__books-path {
+        @include clearfix();
+        display: block;
+        padding: 15px;
+        &:hover {
+          background-color: #EFEFEF;
+        }
+        &__image {
+          float: left;
+          display: block;
+          width: 28px;
+          height: 14px;
+        }
+        &__sentence {
+          float: left;
+          margin-left: 5px;
+          font-size: 14px;
+          color: black;
+        }
+      }
+      &__posting-book {
+        display: block;
+        padding: 15px;
+        border-top: 1px solid #D9D9D9;
+        font-size: 14px;
+        color: black;
+        &:hover {
+          background-color: #EFEFEF;
         }
       }
     }
@@ -158,6 +236,9 @@
         @include clearfix();
         display: block;
         border-top: 1px solid #D9D9D9;
+        &:hover {
+          background-color: #EFEFEF;
+        }
         &__image {
           display: block;
           margin: 10px 0 0 10px;
@@ -184,12 +265,14 @@
   }
 }
 
-
-
 #user-menu-container {
   display: none;
 }
 
 #storage-letters {
+  display: none;
+}
+
+#book-menu-container {
   display: none;
 }
