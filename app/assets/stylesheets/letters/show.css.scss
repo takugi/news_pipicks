@@ -153,11 +153,13 @@
           float: left;
           padding: 16px 30px 16px 0;
           &__form {
-            padding-left: 10px;
-            width: 200px;
-            height: 40px;
-            line-height: 40px;
+            resize: none;
+            overflow: auto;
+            padding: 10px 0 0 10px;
+            width: 300px;
             font-size: 15px;
+            border: 1px solid #EAEAEA;
+            border-radius: 2px;
           }
         }
         &__pick {
