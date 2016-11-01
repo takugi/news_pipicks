@@ -12,7 +12,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def callback_from(provider)
     provider = provider.to_s
-    return flash["alert"] = "#{provider}のデータがありません。" if request.env["omniauth.auth"].nil?
+    return flash["alert"] = "#{provider}のアカウントデータに不足があります。" if request.env["omniauth.auth"].nil?
 
     @user = User.select_or_create_omniauth(request.env["omniauth.auth"])
 

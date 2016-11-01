@@ -14,18 +14,27 @@
       .header__nav__login
         = link_to "ログイン", new_user_session_path, class: "header__nav__login__font"
 - if user_signed_in?
-  .user-menu#user-menu-container
-    .user-menu__user-name
-      = link_to current_user.full_name.presence || "No name", user_path(current_user), class: "user-menu__user-name__font"
-    .user-menu__user-edit
-      = link_to "設定", edit_user_path(current_user), class: "user-menu__user-edit__font"
-    .user-menu__logout
-      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "user-menu__logout__font"
+  .user#user-back
+    .user__back#user-back-close
+      .user__back__user-menu#user-menu-container
+        .user__back__user-menu__user-name
+          = link_to current_user.full_name.presence || "No name", user_path(current_user), class: "user__back__user-menu__user-name__font"
+        .user__back__user-menu__user-edit
+          = link_to "設定", edit_user_path(current_user), class: "user__back__user-menu__user-edit__font"
+        .user__back__user-menu__logout
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "user__back__user-menu__logout__font"
 
-  .storage-menu#storage-letters
-    - if current_user.storage_letters.present?
-      - current_user.storage_letters.each do |storage_letter|
-        .storage-menu__title
-          = link_to storage_letter.title.truncate(40).presence || "No name", letter_path(storage_letter), class: "storage-menu__title__font"
+  .storage#storage-back
+    .storage__back#storage-back-close
+      .storage__back__storage-menu#storage-letters
+        - if current_user.storage_letters.present?
+          - current_user.storages.each do |storage|
+            = link_to letter_path(storage.letter), class: "storage__back__storage-menu__link" do
+              = image_tag storage.letter.image, class: "storage__back__storage-menu__link__image"
+              .storage__back__storage-menu__link__right-block
+                .storage__back__storage-menu__link__right-block__title
+                  = storage.letter.title.truncate(40).presence || "No name"
+                .storage__back__storage-menu__link__right-block__time
+                  = "#{time_ago_in_words(storage.created_at)}前"
 
   = render partial: "letters/new_modal"

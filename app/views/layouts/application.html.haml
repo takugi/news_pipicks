@@ -8,15 +8,16 @@
     = csrf_meta_tags
     = javascript_include_tag  "//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
     = javascript_include_tag  "jquery.bxslider.min.js"
+    = javascript_include_tag  "jquery.autosize.min.js"
     = stylesheet_link_tag     "jquery.bxslider.css", rel: "stylesheet"
   %body
     = render partial: 'layouts/header'
-    - if flash[:notice].present?
-      .notice
-        = flash[:notice]
-    - if flash[:alert].present?
-      .alert
-        = flash[:alert]
+    - flash.each do |type, msg|
+      - if type == "notice" && msg.blank?
+        = image_tag "logo.png", id: "logo"
+      - else
+        %div{class: "#{type}", id: "flash"}
+          = msg
     = yield
     = render partial: 'layouts/footer'
 
