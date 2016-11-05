@@ -12,16 +12,17 @@
       margin: 0 auto;
       padding: 30px 20px;
       width: 796px;
-      &__right-info {
+      &__left-info {
         float: left;
         padding-right: 40px;
         &__avatar {
+          margin: 0 8px;
           width: 80px;
           height: 80px;
           border-radius: 80px;
         }
       }
-      &__left-info {
+      &__right-info {
         float: left;
         width: 650px;
         &__name {
@@ -50,12 +51,16 @@
       margin: 0 auto;
       &__picks {
         float: left;
-        padding-top: 15px;
+        padding: 20px 0;
         width: 96px;
         text-align: center;
         font-size: 14px;
         color: #15274D;
         font-weight: bold;
+        &:hover {
+          background-color: #EFEFEF;
+          box-shadow: 0 0 4px #CCC;
+        }
       }
       &__following-box {
         float: left;
@@ -63,7 +68,7 @@
         height: 54px;
         text-align: center;
         &__count {
-          margin-top: 5px;
+          margin-top: 8px;
           color: #222;
           font-size: 20px;
         }
@@ -71,6 +76,10 @@
           margin-top: 5px;
           color: #999;
           font-size: 10px;
+        }
+        &:hover {
+          background-color: #EFEFEF;
+          box-shadow: 0 0 4px #CCC;
         }
       }
       &__follower-box {
@@ -79,7 +88,7 @@
         height: 54px;
         text-align: center;
         &__count {
-          margin-top: 5px;
+          margin-top: 8px;
           color: #222;
           font-size: 20px;
         }
@@ -87,6 +96,10 @@
           margin-top: 5px;
           color: #999;
           font-size: 10px;
+        }
+        &:hover {
+          background-color: #EFEFEF;
+          box-shadow: 0 0 4px #CCC;
         }
       }
       &__follow-box {
