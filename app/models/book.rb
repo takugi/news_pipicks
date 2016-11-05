@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :user
+  has_many :impressions, ->{ order("created_at desc") }
 
   def self.search_book(key)
     if key.present?

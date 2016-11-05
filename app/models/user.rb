@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :followers, ->{ order("updated_at desc") }, through: :passive_relationships, source: :follower
   has_many :storages, ->{ order("created_at desc")}
   has_many :books, ->{ order("created_at desc") }
+  has_many :impressions
 
   mount_uploader :avatar, AvatarUploader
 
