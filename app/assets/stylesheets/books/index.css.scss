@@ -1,9 +1,9 @@
 .container {
-  &__book-container {
+  &__books-container {
     padding: 28px 28px 0;
     &__cover {
       margin: 0 auto;
-      width: 600px;
+      width: 796px;
       &__individual {
         @include clearfix();
         display: block;
@@ -12,20 +12,24 @@
         &__image {
           float: left;
           display: block;
-          width: 160px;
-          height: 200px;
+          width: 240px;
+          height: 300px;
         }
         &__right-info {
           float: left;
-          margin-left: 10px;
+          margin: 20px;
+          width: 516px;
           &__title {
-            padding: 15px 0;
-            font-size: 18px;
+            margin-bottom: 20px;
+            height: 55px;
+            font-size: 20px;
+            line-height: 26px;
             font-weight: bold;
             color: black;
           }
           &__sub-info {
             @include clearfix();
+            margin-bottom: 20px;
             &__author {
               float: left;
               font-size: 14px;
@@ -33,16 +37,35 @@
             }
             &__manufacturer {
               float: left;
-              margin-left: 10px;
+              margin-left: 20px;
               font-size: 14px;
               color: #999;
             }
           }
-          &__user-comment {
+          &__user {
+            @include clearfix();
             display: block;
             margin-top: 15px;
-            font-size: 16px;
-            color: black;
+            &__avatar {
+              float: left;
+              display: block;
+              width: 40px;
+              height: 40px;
+            }
+            &__info {
+              float: left;
+              margin-left: 10px;
+              &__name {
+                font-size: 16px;
+                font-weight: bold;
+                color: black;
+              }
+              &__profile {
+                margin-top: 10px;
+                font-size: 14px;
+                color: #999;
+              }
+            }
           }
         }
       }
