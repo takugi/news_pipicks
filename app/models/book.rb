@@ -2,6 +2,10 @@ class Book < ActiveRecord::Base
   belongs_to :user
   has_many :impressions, ->{ order("created_at desc") }
 
+  def impression(user)
+    Impression.find_by(user_id: user)
+  end
+
   def self.search_book(key)
     if key.present?
       Amazon::Ecs.debug = true
