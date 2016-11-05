@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :relationships, only: [:create, :destroy]
   resources :categories, only: :show
-  resources :users, only: [:show, :edit, :update] do
-    resources :storages, only: [:index, :create, :destroy]
+  resources :users, only: [:index, :show, :edit, :update] do
+    resources :books, only: [:index, :show, :new, :create, :destroy]
+    resources :storages, only: [:create, :destroy]
     member do
       get :following, :followers
     end

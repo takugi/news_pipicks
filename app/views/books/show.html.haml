@@ -1,0 +1,23 @@
+.container
+  = render partial: "layouts/sidebar"
+  .container__book-container
+    .container__book-container__book-info
+      .container__book-container__book-info__block
+        = image_tag @book.image, class: "container__book-container__book-info__block__image"
+        .container__book-container__book-info__block__right-info
+          = link_to @book.title.truncate(34), @book.url, class: "container__book-container__book-info__block__right-info__title"
+          .container__book-container__book-info__block__right-info__author
+            = "#{@book.author} (著)"
+          .container__book-container__book-info__block__right-info__manufacturer
+            = "#{@book.manufacturer} (社)"
+          .container__book-container__book-info__block__right-info__recommend-user
+            = image_tag @book.user.avatar, class: "container__book-container__book-info__block__right-info__recommend-user__avatar"
+            .container__book-container__book-info__block__right-info__recommend-user__info
+              .container__book-container__book-info__block__right-info__recommend-user__info__name
+                = @book.user.full_name
+                = image_tag "pro.png", class: "container__book-container__book-info__block__right-info__recommend-user__info__name__pro"
+              .container__book-container__book-info__block__right-info__recommend-user__info__profile
+                = @book.user.profile
+          = link_to "購入する(Amazon)", @book.url, class: "container__book-container__book-info__block__right-info__buy"
+
+
