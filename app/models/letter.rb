@@ -13,7 +13,7 @@ class Letter < ActiveRecord::Base
     keys = ["テクノロジー", "ビジネス", "政治・経済", "金融・マーケット", "キャリア・教育", "スポーツ", "イノベーション"]
 
     keys.each do |key|
-      categories["#{key}"] = self.where(created_at: [7.day.ago..Time.now], comments_count: 1..Float::INFINITY, category: key).order(comments_count: :desc, created_at: :desc).first(3)
+      categories["#{key}"] = self.where(created_at: [7.day.ago..Time.now], comments_count: 1..Float::INFINITY, category: key, confidence: 0.7..Float::INFINITY).order(comments_count: :desc, created_at: :desc).first(3)
     end
     categories
   end
