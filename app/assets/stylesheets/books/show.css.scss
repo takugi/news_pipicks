@@ -2,9 +2,10 @@
   &__book-container {
     margin-left: 200px;
     &__book-info {
-      margin: 0 auto;
-      width: 740px;
+      padding: 28px;
       &__block {
+        margin: 0 auto;
+        width: 740px;
         @include clearfix();
         background-color: #FFF;
         &__image {

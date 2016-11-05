@@ -14,7 +14,7 @@
             = image_tag @book.user.avatar, class: "container__book-container__book-info__block__right-info__recommend-user__avatar"
             .container__book-container__book-info__block__right-info__recommend-user__info
               .container__book-container__book-info__block__right-info__recommend-user__info__name
-                = "#{@book.user.full_name}のおすすめ本"
+                = @book.user.full_name
                 = image_tag "pro.png", class: "container__book-container__book-info__block__right-info__recommend-user__info__name__pro"
               .container__book-container__book-info__block__right-info__recommend-user__info__profile
                 = @book.user.profile
