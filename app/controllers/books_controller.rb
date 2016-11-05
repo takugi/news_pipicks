@@ -3,8 +3,8 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @books = Book.all
     @user = User.find(params[:user_id])
+    @books = Book.where(user_id: @user)
   end
 
   def show
