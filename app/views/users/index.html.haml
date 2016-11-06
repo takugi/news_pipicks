@@ -14,4 +14,7 @@
               .container__user-container__cover__individual__user-info__right-info__name
                 = user.full_name.presence || "No name"
               .container__user-container__cover__individual__user-info__right-info__profile
-                = user.profile.truncate(50).presence || ""
+                - if user.profile.present?
+                  = user.profile.truncate(50)
+                - else
+                  = "No profile"
