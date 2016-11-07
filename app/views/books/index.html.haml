@@ -24,3 +24,7 @@
                 .container__books-container__cover__individual__right-info__user__info__profile
                   = book.user.profile
             .container__books-container__cover__individual__right-info__impression
+              - if book.impression(@user).present?
+                = book.impression(@user).content
+              - else
+                = "No impression"
