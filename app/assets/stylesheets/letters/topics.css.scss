@@ -14,62 +14,73 @@
           display: block;
           height: 352px;
           background-color: black;
+          position: relative;
           &__image {
             width: 100%;
-            height: 352px;
+            height: auto;
             opacity: 0.65;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
           }
-          &__picks-box {
-            position: relative;
-            display: inline-block;
-            bottom: 160px;
-            left: 50px;
-            text-align: center;
-            padding: 7px 0;
-            width: 70px;
-            background-color: rgba(45, 45, 45, 0.5);
-            border: 1px solid #FFFFFF;
-            &__cover {
-              display: inline;
-              &__size {
+          &__block {
+            position: absolute;
+            bottom: -100px;
+            &__picks-box {
+              position: relative;
+              display: inline-block;
+              bottom: 160px;
+              left: 50px;
+              text-align: center;
+              padding: 7px 0;
+              width: 70px;
+              background-color: rgba(45, 45, 45, 0.5);
+              border: 1px solid #FFFFFF;
+              &__cover {
                 display: inline;
-                font-size: 14px;
-                font-family: Helvetica;
-                color: #FFFFFF;
-              }
-              &__picks {
-                display: inline;
-                line-height: 14px;
-                font-size: 10px;
-                font-family: Helvetica;
-                color: #FFFFFF;
+                &__size {
+                  display: inline;
+                  font-size: 14px;
+                  font-family: Helvetica;
+                  color: #FFFFFF;
+                }
+                &__picks {
+                  display: inline;
+                  line-height: 14px;
+                  font-size: 10px;
+                  font-family: Helvetica;
+                  color: #FFFFFF;
+                }
               }
             }
-          }
-          &__title {
-            position: relative;
-            bottom: 150px;
-            left: 50px;
-            width: 500px;
-            height: 50px;
-            line-height: 32px;
-            font-size: 25px;
-            font-weight: bold;
-            color: white;
-          }
-          &__sub-info {
-            position: relative;
-            bottom: 130px;
-            left: 50px;
-            font-size: 14px;
-            &__publisher {
-              display: inline-block;
-              color: #CCC;
+            &__title {
+              position: relative;
+              bottom: 150px;
+              left: 50px;
+              width: 500px;
+              height: 50px;
+              line-height: 32px;
+              font-size: 25px;
+              font-weight: bold;
+              color: white;
             }
-            &__time {
-              display: inline-block;
-              margin-left: 10px;
-              color: #CCC;
+            &__sub-info {
+              position: relative;
+              bottom: 130px;
+              left: 50px;
+              font-size: 14px;
+              &__publisher {
+                display: inline-block;
+                color: #CCC;
+              }
+              &__time {
+                display: inline-block;
+                margin-left: 10px;
+                color: #CCC;
+              }
             }
           }
         }
@@ -81,17 +92,26 @@
         width: 33.6%;
         height: 320px;
         &__first {
+          display: block;
           height: 175px;
           background-color: black;
           margin-bottom: 2px;
+          overflow: auto;
+          position: relative;
           &__image {
             width: 100%;
-            height: 100%;
+            height: auto;
             opacity: 0.65;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
           }
           &__title {
-            position: relative;
-            bottom: 60px;
+            position: absolute;
+            bottom: 10px;
             left: 20px;
             width: 350px;
             height: 50px;
@@ -102,16 +122,25 @@
           }
         }
         &__second {
+          display: block;
           height: 175px;
           background-color: black;
+          overflow: auto;
+          position: relative;
           &__image {
             width: 100%;
-            height: 100%;
+            height: auto;
             opacity: 0.65;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
           }
           &__title {
-            position: relative;
-            bottom: 60px;
+            position: absolute;
+            bottom: 10px;
             left: 20px;
             width: 350px;
             height: 50px;
