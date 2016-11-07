@@ -5,8 +5,8 @@
     .container__books-container__cover
       - @books.each do |book|
         .container__books-container__cover__individual
-          = link_to user_book_path(book.user, book) do
-            = image_tag book.image, class: "container__books-container__cover__individual__image"
+          = link_to user_book_path(book.user, book), class: "container__books-container__cover__individual__flame" do
+            = image_tag book.image, class: "container__books-container__cover__individual__flame__image"
           .container__books-container__cover__individual__right-info
             = link_to user_book_path(book.user, book) do
               .container__books-container__cover__individual__right-info__title
