@@ -5,7 +5,7 @@
       .container__book-container__book-info__block
         = image_tag @book.image, class: "container__book-container__book-info__block__image"
         .container__book-container__book-info__block__right-info
-          = link_to @book.title.truncate(24), @book.url, class: "container__book-container__book-info__block__right-info__title"
+          = link_to @book.title.truncate(23), @book.url, class: "container__book-container__book-info__block__right-info__title"
           .container__book-container__book-info__block__right-info__author
             = "#{@book.author} (著)"
           .container__book-container__book-info__block__right-info__manufacturer
@@ -18,7 +18,7 @@
                 = image_tag "pro.png", class: "container__book-container__book-info__block__right-info__recommend-user__info__name__pro"
               .container__book-container__book-info__block__right-info__recommend-user__info__profile
                 = @book.user.profile
-          = link_to "購入する(Amazon)", @book.url, class: "container__book-container__book-info__block__right-info__buy"
+          = link_to "購入する(Amazon)", @book.url, class: "container__book-container__book-info__block__right-info__buy", target: "_blank"
     .container__book-container__book-impression
       - if user_signed_in?
         .container__book-container__book-impression__block
