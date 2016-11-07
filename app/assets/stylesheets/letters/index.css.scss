@@ -13,59 +13,61 @@
     background-color: #FFF;
     box-shadow: 0 0 2px #EAEAEA;
     &__user {
+      display: block;
       height: 150px;
       &__thumbnail {
         text-align: center;
         padding: 30px 0 10px;
         &__avatar {
-          width: 60px;
-          height: 60px;
-          border-radius: 60px;
+          width: 48px;
+          height: 48px;
+          border-radius: 48px;
         }
       }
       &__name {
         text-align: center;
         &__font {
+          font-size: 14px;
+          font-weight: bold;
           color: black;
         }
       }
     }
     &__follow-info {
       @include clearfix();
-      padding: 10px 0;
+      padding: 3px 0;
       margin: 0 auto;
-      width: 180px;
-      height: 50px;
-      border-top: solid 1px #999;
+      width: 100%;
+      border-top: solid 1px #EAEAEA;
+      border-bottom: solid 1px #EAEAEA;
       &__following {
-        width: 88px;
-        height: 50px;
+        width: 98px;
         float: left;
-        border-right: solid 1px #999;
+        border-right: solid 1px #EAEAEA;
         color: black;
         &__count {
-          margin-top: 5px;
+          margin-top: 3.5px;
           text-align: center;
           font-size: 18px;
+          color: #15274D;
         }
         &__caption {
-          margin-top: 5px;
+          margin-top: 3.5px;
           text-align: center;
           font-size: 8px;
         }
       }
       &__follower {
-        width: 88px;
-        height: 50px;
+        width: 98px;
         float: right;
         color: black;
         &__count {
-          margin-top: 5px;
+          margin-top: 3.5px;
           text-align: center;
           font-size: 18px;
         }
         &__caption {
-          margin-top: 5px;
+          margin-top: 3.5px;
           text-align: center;
           font-size: 8px;
         }
