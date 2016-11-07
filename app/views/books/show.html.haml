@@ -3,7 +3,8 @@
   .container__book-container
     .container__book-container__book-info
       .container__book-container__book-info__block
-        = image_tag @book.image, class: "container__book-container__book-info__block__image"
+        .container__book-container__book-info__block__flame
+          = image_tag @book.image, class: "container__book-container__book-info__block__flame__image"
         .container__book-container__book-info__block__right-info
           = link_to @book.title.truncate(23), @book.url, class: "container__book-container__book-info__block__right-info__title"
           .container__book-container__book-info__block__right-info__author
