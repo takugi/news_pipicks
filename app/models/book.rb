@@ -3,7 +3,7 @@ class Book < ActiveRecord::Base
   has_many :impressions, ->{ order("created_at desc") }
 
   def impression(user)
-    Impression.find_by(user_id: user)
+    Impression.find_by(user_id: user, book_id: self.id)
   end
 
   def self.search_book(key)
