@@ -7,7 +7,7 @@ class Storage < ActiveRecord::Base
   validate :user_storages_size_validate
 
   def user_storages_size_validate
-    if self.user && self.user.storages.size >= User::STORAGE_MAX
+    if self.user && self.user.storages.size >= STORAGE_MAX
       errors.add(:base, "ニュース保管登録は5つまでです。")
     end
   end
