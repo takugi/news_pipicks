@@ -5,6 +5,7 @@ class Letter < ActiveRecord::Base
 
   validates :url, format: URI::regexp(%w(http https))
 
+  scope :with_new_letters, ->{ where(comments_count: 1..Float::INFINITY).order(created_at: :desc).first(9) }
   scope :with_better_letters, ->{ where(created_at: [1.days.ago..Time.now], comments_count: 1..Float::INFINITY).order(comments_count: :desc, created_at: :desc).first(5) }
   scope :classify_letters, ->(category){ where(category: category).order("created_at desc") }
 

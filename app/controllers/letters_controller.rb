@@ -3,7 +3,7 @@ class LettersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @letters = Letter.order("created_at desc").first(9)
+    @letters = Letter.with_new_letters
     @better_letters = Letter.with_better_letters
     @categories = Letter.select_categories
   end
