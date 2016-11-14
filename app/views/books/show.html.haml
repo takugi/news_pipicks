@@ -15,10 +15,10 @@
             = image_tag @book.user.avatar, class: "container__book-container__book-info__block__right-info__recommend-user__avatar"
             .container__book-container__book-info__block__right-info__recommend-user__info
               .container__book-container__book-info__block__right-info__recommend-user__info__name
-                = @book.user.full_name
+                = @book.user.full_name.truncate(10)
                 = image_tag "pro.png", class: "container__book-container__book-info__block__right-info__recommend-user__info__name__pro"
               .container__book-container__book-info__block__right-info__recommend-user__info__profile
-                = @book.user.profile
+                = @book.user.profile.truncate(58)
           = link_to "購入する(Amazon)", @book.url, class: "container__book-container__book-info__block__right-info__buy", target: "_blank"
     .container__book-container__book-impression
       - if user_signed_in?

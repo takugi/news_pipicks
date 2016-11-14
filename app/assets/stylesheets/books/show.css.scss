@@ -45,7 +45,6 @@
           &__recommend-user {
             @include clearfix();
             padding-top: 40px;
-            width: 100%;
             &__avatar {
               float: left;
               display: block;
@@ -55,9 +54,10 @@
             &__info {
               float: left;
               margin-left: 10px;
+              width: 174px;
               &__name {
                 margin-bottom: 5px;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: bold;
                 &__pro {
                   margin-left: 5px;
@@ -67,7 +67,7 @@
               }
               &__profile {
                 margin-top: 10px;
-                font-size: 14px;
+                font-size: 12px;
                 color: #999;
               }
             }
