@@ -90,6 +90,10 @@ class Letter < ActiveRecord::Base
       }
 
       obj = JSON.parse(response.body)
-      return obj["top_class"], (obj["classes"][0]["confidence"])
+      if (obj["top_class"] || obj["classes"]).nil?
+        return "", 0
+      else
+        return obj["top_class"], (obj["classes"][0]["confidence"])
+      end
     end
 end
